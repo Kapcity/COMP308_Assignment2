@@ -1,5 +1,5 @@
 {
-  "name": "comp308-assignment1",
+  "name": "comp308-assignment2",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -23,7 +23,7 @@
     "morgan": "~1.9.0",
     "popper.js": "^1.14.7"
   },
-  "description": "Comp 308 Assignment 1 ",
+  "description": "Comp 308 Assignment 2 ",
   "main": "server.js",
   "author": "Kapilan Santhiramohan",
   "license": "ISC",
