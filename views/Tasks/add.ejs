@@ -1,0 +1,64 @@
+<!-- 
+Name: Kapilan Santhiramohan
+Date: March, 27, 2019
+ -->
+  <!-- content -->
+  <% include ../partials/headers.ejs %>
+<div class="container">
+  <br>
+  <div class="jumbotron" id="bodycolour">
+  <!--Gives viewer the option to call-->
+       
+            <h1>Add Task</h1>
+  <br>
+
+  <!--Gives viewer the option to email when they fill out the form which should be redirected to email address at a later point in time-->
+  <div class="form_size">
+  <form class="form" method="POST">
+  <div class="row">
+    <div class="col-sm-3">
+    <label for="name"  class="col-form-label" aria-hidden="true"> Name: </label> 
+    </div>
+    <div class="col-sm-6">
+    <input type="text" class="form-control form-control-sm" name= "name" required="required" id ="txt_name" >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+     <label for="task" class="col-form-label">Task Name: </label>
+    </div>
+    <div class="col-sm-6">
+      <input type="text" class="form-control form-control-sm" name= "task" required="required" id = "txt_task">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+    <label for="email" class="col-form-label">Description: </label>
+    </div>
+    <div class="col-sm-6">
+      
+      <textarea class="form-control" id="txt_desc" name= "desc" required="required" rows="3"></textarea>
+      
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-3">
+    
+    <label for="number" class="col-form-label">Due Date: </label> 
+    </div>
+    <div class="col-sm-6">
+    <input type="date" class="form-control form-control-sm" name= "date" required="required" id ="txt_date" >
+    </div>
+  </div>
+<br>
+
+    <!--Standard form submit and reset buttons with a cell infornt to centralize buttons with form -->
+    <button class="btn btn-primary" id = "btn_add" type="submit" >Add </button>
+        <button class="btn btn-primary" type="reset" >Reset </button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<% include ../partials/footer.ejs %>

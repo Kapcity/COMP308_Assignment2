@@ -9,6 +9,13 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 
+//modules for authentication
+let session = require('express-session');
+let passport = require('passport');
+let passportLocal = require('passport-local');
+let localStrategy = passportLocal.Strategy;
+let flash = require('connect-flash');
+
 //database setup
 let mongoose = require('mongoose');
 let DB = require('./config/db')
@@ -42,6 +49,33 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
+
+// setup express-session 
+app.use(session({
+  secret:"Some Secret",
+  saveUninitialized: false,
+  resave: false
+}));
+
+//intialize flash
+app.use(flash());
+
+//intialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+//passport user config
+
+//create a User Model
+let userModel = require('./model/user');
+let User = userModel.User;
+
+//implement a User Authentication strategy
+passport.use(User.createStrategy());
+
+//serialize and deserialize the User info
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/task-list', taskRouter);
