@@ -1,0 +1,81 @@
+<!-- 
+Name: Kapilan Santhiramohan
+Date: March, 27, 2019
+ -->
+  <!-- content -->
+  <% include ../partials/headers.ejs %>
+<div class="container">
+  <br>
+  <div class="jumbotron" id="bodycolour">
+
+       
+            <h1>Edit Task</h1>
+  <br>
+
+  <!--Allows users to edit table information-->
+  <div class="form_size">
+  <form class="form" method="POST">
+  <div class="row">
+    <div class="col-sm-3">
+    <label for="name"  class="col-form-label" aria-hidden="true"> Name: </label> 
+    </div>
+    <div class="col-sm-6">
+    <input type="text" class="form-control form-control-sm" 
+    name= "name" 
+    required="required"
+    id ="txt_name" 
+    value="<%= Task.Name%>" >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+     <label for="task" class="col-form-label">Task Name: </label>
+    </div>
+    <div class="col-sm-6">
+      <input type="text" class="form-control form-control-sm" 
+      name= "task"
+       required="required"
+        id = "txt_task" 
+        value="<%= Task.Task%>">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+    <label for="email" class="col-form-label">Description: </label>
+    </div>
+    <div class="col-sm-6">
+      
+      <textarea class="form-control" 
+      id="txt_desc" 
+      name= "desc" 
+      required="required"
+      rows="3"
+     > <%= Task.Description %></textarea>
+      
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-3">
+    
+    <label for="number" class="col-form-label">Due Date: </label> 
+    </div>
+    <div class="col-sm-6">
+    <input type="String" class="form-control form-control-sm" 
+    name= "date" 
+    required="required"
+     id ="txt_date"
+     value="<%= Task.Due_Date%>" >
+    </div>
+  </div>
+<br>
+
+    <!--Standard form submit and reset buttons with a cell infornt to centralize buttons with form -->
+    <button class="btn btn-primary" id = "btn_add" type="submit" >Add </button>
+        <button class="btn btn-warning" type="reset" >Reset </button>
+</form>
+</div>
+</div>
+</div>
+</div>
+<% include ../partials/footer.ejs %>

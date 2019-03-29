@@ -9,8 +9,16 @@ Date: Feb, 14, 2015
 
     function Start() {
         console.log(`%c App Started...`, "font-size: 20px; color: blue; font-weight: bold");
-    }
+    
 
+    $(".btn-danger").onclick(function(event) {
+        if(!confirm("Are you sure?")) {
+            event.preventDefault();
+            window.location.assign("/task-list");
+        }
+
+    });
+}
     window.addEventListener("load", Start);
 
 })();

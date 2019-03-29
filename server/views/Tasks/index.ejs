@@ -1,0 +1,59 @@
+<!-- 
+Name: Kapilan Santhiramohan
+Date: March, 27, 2019
+ -->
+<% include ../partials/headers.ejs %>
+
+<div class="container">
+  <br />
+
+  <div class="jumbotron">
+    <!--Uses bootstraps design to give a clear border round content which is used throughout all pages for consistancy. Placed a personal quote 
+  as it makes the homepage look at more busy than a simple paragraph. -->
+    <div>
+      <div class="row">
+        <div class="col-md-offset3 col-md-6">
+          <h3><%= title %></h3>
+          <br />
+          <a class="btn btn-primary" href="task-list/add" role="button">
+            <i class="fa fa-plus-circle"></i>Add Task</a
+          >
+          <br />
+          <table class="table table-bordered table-striped table-hover">
+            <!--Table Header Row-->
+            <tr>
+              <th class="text-center">Person Name:</th>
+              <th class="text-center">Task Name:</th>
+              <th class="text-center">Description:</th>
+              <th class="text-center">End Date:</th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
+            </tr>
+
+            <!--Repeatable Rows for data-->
+
+            <% for(let count=0; count < ToDoList.length; count++) { %>
+            <tr>
+              <td class="text-centre"><%= ToDoList[count].Name %></td>
+              <td class="text-centre"><%= ToDoList[count].Task %></td>
+              <td class="text-centre"><%= ToDoList[count].Description %></td>
+              <td class="text-centre"><%= ToDoList[count].Due_Date %></td>
+              <td class="text-centre">
+                <a href="/task-list/edit/<%= ToDoList[count]._id %>"
+                class="btn btn-primary"><i class="fa fa-pencil">Edit</i> </a>
+              </td>
+
+              <td class="text-centre">
+                    <a href="/task-list/delete/<%= ToDoList[count]._id %>"
+                    class="btn btn-danger"><i class="fa fa-trash">Delete</i> </a>
+                  </td>
+            </tr>
+            <% } %>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% include ../partials/footer.ejs %>
+</div>
