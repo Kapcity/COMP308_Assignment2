@@ -1,6 +1,7 @@
 let express = require("express");
 let router = express.Router();
 
+let jwt = require('jsonwebtoken');
 let passport = require('passport');
 //create reference for to the Tasklist Schema
 let todo = require("../model/TaskList");
@@ -15,25 +16,25 @@ function requireAuth(req,res, neext) {
     next();
 }
 
-router.get('/',requireAuth, TaskListController.displayTasklist);
+router.get('/',TaskListController.displayTasklist);
 
 
-router.get("/add",requireAuth,TaskListController.AddTask);
+router.get("/add",TaskListController.AddTask);
 
 //create post for procressing add page
-router.post('/add', requireAuth,TaskListController.AddPost);
+router.post('/add',TaskListController.AddPost);
 
 
 //Get request for the display edit page
-router.get('/edit/:id',requireAuth, TaskListController.EditGet);
+router.get('/edit/:id', TaskListController.EditGet);
 
 
 //Post method to update the list
-router.post('/edit/:id', requireAuth, TaskListController.EditPost);
+router.post('/edit/:id',  TaskListController.EditPost);
 
 
 //get request for delete on the database
-router.get('/delete/:id',requireAuth , TaskListController.DeleteTask);
+router.get('/delete/:id', TaskListController.DeleteTask);
 
 
 //create a reference to the db schema

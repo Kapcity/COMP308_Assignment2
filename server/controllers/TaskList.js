@@ -1,5 +1,6 @@
 let express = require("express");
 let router = express.Router();
+let jwt = require('jsonwebtoken');
 
 
 //create reference for to the Tasklist Schema
@@ -15,20 +16,13 @@ module.exports.displayTasklist = (req, res, next) => {
     else {
       // console.log(ToDoList);
 
-      res.render("Tasks/index", {
-        title: "Task List",
-        ToDoList: ToDoList,
-        displayName: req.user ? req.user.displayName: ""
-      });
+      return res.json({success: true, msg: "Task List displayed successfully", ToDoList, user: req.user});
     }
   });
 }
 //gets add page
 module.exports.AddTask = (req, res, next) => {
-  res.render("Tasks/add", {
-    title: "Add new Task",
-    displayName: req.user ? req.user.displayName: ""
-  });
+  return res.json({success: true, msg: "Add Task Page displayed successfully"});
 };
 //on click adds to the list
 module.exports.AddPost = (req, res, next) => {
@@ -46,7 +40,7 @@ module.exports.AddPost = (req, res, next) => {
       res.end(err);
     }
     else {
-      res.redirect('/task-list')
+      return res.json({success: true, msg: "Successfully added new task"});
     }
   });
 };
@@ -61,11 +55,7 @@ module.exports.EditGet = (req, res, next) => {
       res.end(err);
     }
     else {
-      res.render('Tasks/edit', {
-        title: 'Edit Task List',
-        Task: TaskObject,
-        displayName: req.user ? req.user.displayName: ""
-      });
+      return res.json({success: true, msg: "Edit Task displayed successfully", task: TaskObject });
     }
   });
 
@@ -90,7 +80,7 @@ module.exports.EditPost = (req, res, next) => {
       res.end(err);
     }
     else {
-      res.redirect('/task-list');
+      return res.json({success: true, msg: "Successfully updated task", task: TaskObject});
     }
   })
 
@@ -107,7 +97,7 @@ module.exports.DeleteTask = (req, res, next) => {
       res.end(err);
     }
     else {
-      res.redirect('/task-list');
+      return res.json({success: true, msg: "Task successfully deleted"});
     }
   })
 

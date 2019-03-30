@@ -15,31 +15,36 @@ router.post('/contact', (req, res, next) => {
 
 
 /* GET home page. */
-router.get('/', indexController.displayHomePage);
+//router.get('/', indexController.displayHomePage);
 
 /* GET about page. */
-router.get('/about', indexController.displayAboutPage);
+//router.get('/about', indexController.displayAboutPage);
 
 /* GET project page. */
-router.get('/projects', indexController.displayProjectPage);
+//router.get('/projects', indexController.displayProjectPage);
 
 /* GET services page. */
-router.get('/services', indexController.displayServicesPage);
+//router.get('/services', indexController.displayServicesPage);
 
 /* GET contact page. */
-router.get('/contact', indexController.displayContactPage);
+//router.get('/contact', indexController.displayContactPage);
 
 /* GET education page. */
-router.get('/Education', indexController.displayEducationPage);
+//router.get('/Education', indexController.displayEducationPage);
 
 // get login page
-router.get('/login', indexController.DisplayLogin);
+//router.get('/login', indexController.DisplayLogin);
+
 // post request that process the login pages
 router.post('/login', indexController.ProcessLogin);
+
 // get to display user registration page
-router.get('/register', indexController.DisplayReg);
+//router.get('/register', indexController.DisplayReg);
+
 //post request to process the registration page
 router.post('/register', indexController.ProcessReg);
+
 //get request log out
 router.get('/logout', indexController.LoggoutPost);
+
 module.exports = router;
