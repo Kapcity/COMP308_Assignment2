@@ -17,7 +17,8 @@ module.exports.displayTasklist = (req, res, next) => {
 
       res.render("Tasks/index", {
         title: "Task List",
-        ToDoList: ToDoList
+        ToDoList: ToDoList,
+        displayName: req.user ? req.user.displayName: ""
       });
     }
   });
@@ -25,7 +26,8 @@ module.exports.displayTasklist = (req, res, next) => {
 //gets add page
 module.exports.AddTask = (req, res, next) => {
   res.render("Tasks/add", {
-    title: "Add new Task"
+    title: "Add new Task",
+    displayName: req.user ? req.user.displayName: ""
   });
 };
 //on click adds to the list
@@ -49,7 +51,7 @@ module.exports.AddPost = (req, res, next) => {
   });
 };
 
-//gets id for edit page and all its values
+//gets edit page and all its values
 module.exports.EditGet = (req, res, next) => {
   let id = req.params.id;
   todo.findById(id, (err, TaskObject) => {
@@ -61,7 +63,8 @@ module.exports.EditGet = (req, res, next) => {
     else {
       res.render('Tasks/edit', {
         title: 'Edit Task List',
-        Task: TaskObject
+        Task: TaskObject,
+        displayName: req.user ? req.user.displayName: ""
       });
     }
   });
