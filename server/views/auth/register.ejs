@@ -1,0 +1,50 @@
+ <% include ../partials/headers.ejs %>
+
+
+<main class="container">
+  <div class="jumbotron" id="bodycolour">
+
+    <% if(message.length > 0) { %>
+        <div class="alert alert-danger">
+            <%= message %>
+        </div>
+
+
+    <% }  %>
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <h1>Please Register</h1>
+            <form method="POST">
+                <fieldset class="form-group">
+                    <label for="">Username: </label>
+                    <input type="text" required class="form-control"
+                    name="username"  id="username"></fieldset>
+                <fieldset class="form-group">
+                    <label for="">Password: </label>
+                    <input type="password" required class="form-control"
+                    name="password" id="password">
+                </fieldset>
+
+                  <fieldset class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" required class="form-control"
+                    name="email" id="email">
+                </fieldset>
+
+                  <fieldset class="form-group">
+                    <label for="displayName">Display Name: </label>
+                    <input type="test" required class="form-control"
+                    name="displayName" id="displayName">
+                </fieldset>
+
+                <fieldset class="form-group text-right">
+                    <input type="submit" class="btn btn-success" value="Register">
+                    <a href="/">
+                        <input type="button" class="btn btn-warning" value="Cancel">
+                    </a>
+            </form>
+        </div>
+    </div>
+    </div>
+</main>
+<% include ../partials/footer.ejs %>

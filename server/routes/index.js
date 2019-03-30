@@ -32,4 +32,14 @@ router.get('/contact', indexController.displayContactPage);
 /* GET education page. */
 router.get('/Education', indexController.displayEducationPage);
 
+// get login page
+router.get('/login', indexController.DisplayLogin);
+// post request that process the login pages
+router.post('/login', indexController.ProcessLogin);
+// get to display user registration page
+router.get('/register', indexController.DisplayReg);
+//post request to process the registration page
+router.post('/register', indexController.ProcessReg);
+//get request log out
+router.get('/logout', indexController.LoggoutPost);
 module.exports = router;
