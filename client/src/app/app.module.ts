@@ -22,6 +22,10 @@ import { TaskListComponent } from './task/task-list/task-list.component';
 
 //services
 import{FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { TaskDetailsComponent } from './task/task-details/task-details.component';
+import { TaskDeleteComponent } from './task/task-delete/task-delete.component';
 
 
 @NgModule({
@@ -37,7 +41,11 @@ import{FlashMessagesModule, FlashMessagesService} from 'angular2-flash-messages'
     EducationComponent,
     PageNotFoundComponent,
     ProjectComponent,
-    TaskListComponent
+    TaskListComponent,
+    RegisterComponent,
+    LoginComponent,
+    TaskDetailsComponent,
+    TaskDeleteComponent
   ],
   imports: [
     BrowserModule,
