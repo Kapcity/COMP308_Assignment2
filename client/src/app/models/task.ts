@@ -1,6 +1,7 @@
 export class Task {
-    Name: String;
-    Task: String;
-    Description: String;
-    Due_Date: Date;
+  _id: String;
+  Name: String;
+  Task: String;
+  Description: String;
+  Due_Date: Date;
 }

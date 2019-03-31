@@ -1,46 +1,56 @@
 <div class="container">
-  <br>
+  <br />
   <div class="jumbotron">
-<div>
-  <div class="row">
-    <div class="col-md-offset3 col-md-6">
-      <h3>Task List</h3>
-      <br />
-      <a class="btn btn-primary" routerLink="task-list/add" role="button">
-        <i class="fa fa-plus-circle"></i>Add Task</a>
-      <br />
-       <table class="table table-bordered table-striped table-hover">
-        <!--Table Header Row-->
-         <tr>
-          <th class="text-center">Person Name:</th>
-          <th class="text-center">Task Name:</th>
-          <th class="text-center">Description:</th>
-          <th class="text-center">End Date:</th>
-          <th class="text-center"></th>
-          <th class="text-center"></th>
-        
+    <div>
+      <div class="row">
+        <div class="col-md-offset3 col-md-6">
+          <h3>Task List</h3>
+          <br />
+          <a
+            class="btn btn-primary"
+            routerLink="/task/task-list/add"
+            role="button"
+          >
+            <i class="fa fa-plus-circle"></i>Add Task</a
+          >
+          <br />
+          <table class="table table-bordered table-striped table-hover">
+            <!--Table Header Row-->
+            <tr>
+              <th class="text-center">Person Name:</th>
+              <th class="text-center">Task Name:</th>
+              <th class="text-center">Description:</th>
+              <th class="text-center">End Date:</th>
+              <th class="text-center"></th>
+              <th class="text-center"></th>
 
-        <!--Repeatable Rows for data-->
+              <!--Repeatable Rows for data-->
+            </tr>
 
- 
-        <tr *ngFor="let task of tasks">
-          <td class="text-centre">{{ Task.Name}}</td>
-          <td class="text-centre">{{ Task.Task}}</td>
-          <td class="text-centre">{{ Task.Description }}</td>
-          <td class="text-centre">{{ Task.Due_Date }}</td>
-          <td class="text-centre">
-            <a routerLink="edit/{{ task._id }}" class="btn btn-primary"><i class="fa fa-pencil">Edit</i> </a>
-          </td>
+            <tr *ngFor="let task of tasks">
+              <td class="text-centre">{{ Task.Name }}</td>
+              <td class="text-centre">{{ Task.Task }}</td>
+              <td class="text-centre">{{ Task.Description }}</td>
+              <td class="text-centre">{{ Task.Due_Date }}</td>
+              <td class="text-centre">
+                <a
+                  routerLink="/task/task-list/edit/{{ task._id }}"
+                  class="btn btn-primary"
+                  ><i class="fa fa-pencil">Edit</i>
+                </a>
+              </td>
 
-          <td class="text-centre">
-            <a routerLink="delete/{{ task._id }}" 
-              class="btn btn-danger"><i class="fa fa-trash">Delete</i> </a>
-          </td>
-        </tr>
-
-      </table>  
+              <td class="text-centre">
+                <a
+                  routerLink="/task/task-list/delete/{{ task._id }}"
+                  class="btn btn-danger"
+                  ><i class="fa fa-trash">Delete</i>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 </div>
