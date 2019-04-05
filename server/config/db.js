@@ -1,7 +1,10 @@
-module.exports = 
-{
-    "URI": "mongodb://localhost/COMP308_Assignment2",
+/* */
+module.exports = {
+  URI: "mongodb://localhost/COMP308_Assignment2",
+  //URI: "mongodb://localhost/test",
+  // URI:
+  //   "mongodb+ srv://kapcity:kapcity@kapilan-hl4k2.azure.mongodb.net/test?retryWrites=true",
 
-//"URI" : "mongodb+srv://kapcity:kapcity@01@kapilan-hl4k2.azure.mongodb.net/test?retryWrites=true",
-    "secret": "SomeSecret"
-}
+  //"URI" : "mongodb+srv://kapcity:kapcity@01@kapilan-hl4k2.azure.mongodb.net/test?retryWrites=true",
+  secret: "SomeSecret"
+};

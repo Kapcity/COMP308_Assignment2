@@ -47,7 +47,7 @@ const routes: Routes = [
     data: { title: "Edit Task" }
   },
   {
-    path: "task/task-list/delete",
+    path: "task/task-list/delete/:id",
     component: TaskDeleteComponent,
     data: { title: "Delete Task" }
   },

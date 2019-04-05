@@ -1,0 +1,366 @@
+[33mcommit 7dcbe7ff946e6f849e46f1eb54cc2dd3c482836e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Kapilan <Kapster03@gmail.com>
+Date:   Sat Mar 30 21:40:32 2019 -0400
+
+    CRUD updated
+
+[1mdiff --git a/client/src/app/models/task.ts b/client/src/app/models/task.ts[m
+[1mindex 5cd4e8f..3425878 100644[m
+[1m--- a/client/src/app/models/task.ts[m
+[1m+++ b/client/src/app/models/task.ts[m
+[36m@@ -1,6 +1,7 @@[m
+ export class Task {[m
+[31m-    Name: String;[m
+[31m-    Task: String;[m
+[31m-    Description: String;[m
+[31m-    Due_Date: Date;[m
+[32m+[m[32m  _id: String;[m
+[32m+[m[32m  Name: String;[m
+[32m+[m[32m  Task: String;[m
+[32m+[m[32m  Description: String;[m
+[32m+[m[32m  Due_Date: Date;[m
+ }[m
+[1mdiff --git a/client/src/app/pages/home/home.component.html b/client/src/app/pages/home/home.component.html[m
+[1mindex 983546c..f382f04 100644[m
+[1m--- a/client/src/app/pages/home/home.component.html[m
+[1m+++ b/client/src/app/pages/home/home.component.html[m
+[36m@@ -40,11 +40,24 @@[m
+       luxurious feel.[m
+     </p>[m
+     <p class="lead">[m
+[31m-      <a class="btn btn-info btn-lg" href="/about" role="button">About Me</a>[m
+[31m-      <a class="btn btn-info btn-lg" href="./project" role="button">Projects</a>[m
+[31m-      <a class="btn btn-info btn-lg" href="./services" role="button">Services</a>[m
+[31m-      <a class="btn btn-info btn-lg" href="./contact" role="button">Contact</a>[m
+[31m-      <a class="btn btn-primary btn-lg" href="./task/task-list" role="button">Task List</a>[m
+[32m+[m[32m      <a class="btn btn-info btn-lg" routerLink="/about" role="button"[m
+[32m+[m[32m        >About Me</a[m
+[32m+[m[32m      >[m
+[32m+[m[32m      <a class="btn btn-info btn-lg" routerLink="/project" role="button"[m
+[32m+[m[32m        >Projects</a[m
+[32m+[m[32m      >[m
+[32m+[m[32m      <a class="btn btn-info btn-lg" routerLink="/services" role="button"[m
+[32m+[m[32m        >Services</a[m
+[32m+[m[32m      >[m
+[32m+[m[32m      <a class="btn btn-info btn-lg" routerLink="/contact" role="button"[m
+[32m+[m[32m        >Contact</a[m
+[32m+[m[32m      >[m
+[32m+[m[32m      <a[m
+[32m+[m[32m        class="btn btn-primary btn-lg"[m
+[32m+[m[32m        routerLink="/task/task-list"[m
+[32m+[m[32m        role="button"[m
+[32m+[m[32m        >Task List</a[m
+[32m+[m[32m      >[m
+     </p>[m
+   </div>[m
+ </div>[m
+[1mdiff --git a/client/src/app/services/task-list.service.ts b/client/src/app/services/task-list.service.ts[m
+[1mindex e7c917f..74ae0fd 100644[m
+[1m--- a/client/src/app/services/task-list.service.ts[m
+[1m+++ b/client/src/app/services/task-list.service.ts[m
+[36m@@ -1,30 +1,55 @@[m
+[31m-import { Injectable } from '@angular/core';[m
+[31m-import {HttpClient, HttpHeaders} from '@angular/common/http';[m
+[31m-import {Observable} from 'rxjs';[m
+[31m-import {Task} from '../models/task';[m
+[31m-[m
+[32m+[m[32mimport { Injectable } from "@angular/core";[m
+[32m+[m[32mimport { HttpClient, HttpHeaders } from "@angular/common/http";[m
+[32m+[m[32mimport { Observable } from "rxjs";[m
+[32m+[m[32mimport { Task } from "../models/task";[m
+[32m+[m[32mimport { User } from "../models/user";[m
+ [m
+ @Injectable({[m
+[31m-  providedIn: 'root'[m
+[32m+[m[32m  providedIn: "root"[m
+ })[m
+ export class TaskListService {[m
+[32m+[m[32m  private user: User;[m
+ [m
+[31m-  private endpoint = 'http://localhost:3000/api/contact-list';[m
+[32m+[m[32m  private endpoint = "http://localhost:3000/api/contact-list/";[m
+ [m
+[31m-  private httpOptions = [m
+[31m-  {[m
+[32m+[m[32m  private httpOptions = {[m
+     headers: new HttpHeaders({[m
+[31m-      'Content-Type' : 'application/json',[m
+[31m-      'Access-Control-All-Origin': '*',[m
+[31m-      'Access-Control-Allows-Headers': 'Origin, X-Requested-With, Content-Type, Accept'[m
+[32m+[m[32m      "Content-Type": "application/json",[m
+[32m+[m[32m      "Access-Control-All-Origin": "*",[m
+[32m+[m[32m      "Access-Control-Allows-Headers":[m
+[32m+[m[32m        "Origin, X-Requested-With, Content-Type, Accept"[m
+     })[m
+[32m+[m[32m  };[m
+[32m+[m
+[32m+[m[32m  constructor(private http: HttpClient) {}[m
+[32m+[m
+[32m+[m[32m  public getList(): Observable<any> {[m
+[32m+[m[32m    return this.http.get<any>(this.endpoint, this.httpOptions);[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  public getTask(task: Task): Observable<any> {[m
+[32m+[m[32m    return this.http.post<any>([m
+[32m+[m[32m      this.endpoint + "edit/" + task._id,[m
+[32m+[m[32m      this.httpOptions[m
+[32m+[m[32m    );[m
+   }[m
+ [m
+[31m-  constructor(private http: HttpClient){}[m
+[31m-  [m
+[31m-    public getList(): Observable<any>[m
+[31m-    {[m
+[31m-      return this.http.get<any>(this.endpoint, this.httpOptions);[m
+[31m-    }[m
+[31m-  [m
+[32m+[m[32m  public addTask(task: Task): Observable<any> {[m
+[32m+[m[32m    return this.http.post<any>(this.endpoint + "add", this.httpOptions);[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  public editTask(task: Task): Observable<any> {[m
+[32m+[m[32m    return this.http.post<any>([m
+[32m+[m[32m      this.endpoint + "edit/" + task._id,[m
+[32m+[m[32m      task,[m
+[32m+[m[32m      this.httpOptions[m
+[32m+[m[32m    );[m
+[32m+[m[32m  }[m
+[32m+[m
+[32m+[m[32m  public deleteTask(task: Task): Observable<any> {[m
+[32m+[m[32m    return this.http.get<any>([m
+[32m+[m[32m      this.endpoint + "delete/" + task._id,[m
+[32m+[m[32m      this.httpOptions[m
+[32m+[m[32m    );[m
+[32m+[m[32m  }[m
+ }[m
+[1mdiff --git a/client/src/app/task/task-details/task-details.component.html b/client/src/app/task/task-details/task-details.component.html[m
+[1mindex 930d0c6..99d5b57 100644[m
+[1m--- a/client/src/app/task/task-details/task-details.component.html[m
+[1m+++ b/client/src/app/task/task-details/task-details.component.html[m
+[36m@@ -1,3 +1,94 @@[m
+[31m-<p>[m
+[31m-  task-details works![m
+[31m-</p>[m
+[32m+[m[32m<div class="container">[m
+[32m+[m[32m  <br />[m
+[32m+[m[32m  <div class="jumbotron" id="bodycolour">[m
+[32m+[m[32m    <h1>{{ title }}</h1>[m
+[32m+[m[32m    <br />[m
+[32m+[m
+[32m+[m[32m    <!--Allows users to edit table information-->[m
+[32m+[m[32m    <div class="form_size">[m
+[32m+[m[32m      <form class="form" (submit)="onDetailsPageSubmit()">[m
+[32m+[m[32m        <div class="row">[m
+[32m+[m[32m          <div class="col-sm-3">[m
+[32m+[m[32m            <label for="name" class="col-form-label" aria-hidden="true">[m
+[32m+[m[32m              Name:[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div class="col-sm-6">[m
+[32m+[m[32m            <input[m
+[32m+[m[32m              type="text"[m
+[32m+[m[32m              class="form-control form-control-sm"[m
+[32m+[m[32m              name="name"[m
+[32m+[m[32m              [(ngModel)]="Task.Name"[m
+[32m+[m[32m              required="required"[m
+[32m+[m[32m              id="txt_name"[m
+[32m+[m[32m              value="{{ Task.Name }}"[m
+[32m+[m[32m            />[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m        <div class="row">[m
+[32m+[m[32m          <div class="col-sm-3">[m
+[32m+[m[32m            <label for="task" class="col-form-label">Task Name: </label>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div class="col-sm-6">[m
+[32m+[m[32m            <input[m
+[32m+[m[32m              type="text"[m
+[32m+[m[32m              class="form-control form-control-sm"[m
+[32m+[m[32m              name="task"[m
+[32m+[m[32m              required="required"[m
+[32m+[m[32m              id="txt_task"[m
+[32m+[m[32m              [(ngModel)]="Task.Task"[m
+[32m+[m[32m              value="{{ Task.Task }}"[m
+[32m+[m[32m            />[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m        <div class="row">[m
+[32m+[m[32m          <div class="col-sm-3">[m
+[32m+[m[32m            <label for="email" class="col-form-label">Description: </label>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div class="col-sm-6">[m
+[32m+[m[32m            <textarea[m
+[32m+[m[32m              class="form-control"[m
+[32m+[m[32m              id="txt_desc"[m
+[32m+[m[32m              name="desc"[m
+[32m+[m[32m              required="required"[m
+[32m+[m[32m              [(ngModel)]="Task.Description"[m
+[32m+[m[32m              rows="3"[m
+[32m+[m[32m            >[m
+[32m+[m[32m {{ Task.Description }}</textarea[m
+[32m+[m[32m            >[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m        <br />[m
+[32m+[m[32m        <div class="row">[m
+[32m+[m[32m          <div class="col-sm-3">[m
+[32m+[m[32m            <label for="number" class="col-form-label">Due Date: </label>[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m          <div class="col-sm-6">[m
+[32m+[m[32m            <input[m
+[32m+[m[32m              type="String"[m
+[32m+[m[32m              class="form-control form-control-sm"[m
+[32m+[m[32m              name="date"[m
+[32m+[m[32m              required="required"[m
+[32m+[m[32m              id="txt_date"[m
+[32m+[m[32m              [(ngModel)]="Task.Due_Date"[m
+[32m+[m[32m              value="{{ Task.Due_Date }}"[m
+[32m+[m[32m            />[m
+[32m+[m[32m          </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m        <br />[m
+[32m+[m
+[32m+[m[32m        <!--Standard form submit and reset buttons with a cell infornt to centralize buttons with form -->[m
+[32m+[m[32m        <button class="btn btn-primary" id="btn_add" type="submit">[m
+[32m+[m[32m          {{ title }}[m
+[32m+[m[32m        </button>[m
+[32m+[m[32m        <button[m
+[32m+[m[32m          routerLink="/task/task-list"[m
+[32m+[m[32m          class="btn btn-warning"[m
+[32m+[m[32m          type="reset"[m
+[32m+[m[32m        >[m
+[32m+[m[32m          Cancel[m
+[32m+[m[32m        </button>[m
+[32m+[m[32m      </form>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  </div>[m
+[32m+[m[32m</div>[m
+[1mdiff --git a/client/src/app/task/task-details/task-details.component.ts b/client/src/app/task/task-details/task-details.component.ts[m
+[1mindex 0f21057..c30a436 100644[m
+[1m--- a/client/src/app/task/task-details/task-details.component.ts[m
+[1m+++ b/client/src/app/task/task-details/task-details.component.ts[m
+[36m@@ -1,15 +1,55 @@[m
+[31m-import { Component, OnInit } from '@angular/core';[m
+[32m+[m[32mimport { Component, OnInit } from "@angular/core";[m
+[32m+[m[32mimport { TaskListService } from "src/app/services/task-list.service";[m
+[32m+[m[32mimport {[m
+[32m+[m[32m  FlashMessagesModule,[m
+[32m+[m[32m  FlashMessagesService[m
+[32m+[m[32m} from "angular2-flash-messages";[m
+[32m+[m[32mimport { Router, ActivatedRoute } from "@angular/router";[m
+[32m+[m[32mimport { Task } from "src/app/models/task";[m
+ [m
+ @Component({[m
+[31m-  selector: 'app-task-details',[m
+[31m-  templateUrl: './task-details.component.html',[m
+[31m-  styleUrls: ['./task-details.component.css'][m
+[32m+[m[32m  selector: "app-task-details",[m
+[32m+[m[32m  templateUrl: "./task-details.component.html",[m
+[32m+[m[32m  styleUrls: ["./task-details.component.css"][m
+ })[m
+ export class TaskDetailsComponent implements OnInit {[m
+[32m+[m[32m  title: String;[m
+[32m+[m[32m  Task: Task;[m
+ [m
+[31m-  constructor() { }[m
+[32m+[m[32m  constructor([m
+[32m+[m[32m    private activatedRoute: ActivatedRoute,[m
+[32m+[m[32m    private flashMessage: FlashMessagesService,[m
+[32m+[m[32m    private taskListService: TaskListService,[m
+[32m+[m[32m    private router: Router[m
+[32m+[m[32m  ) {}[m
+ [m
+   ngOnInit() {[m
+[32m+[m[32m    this.title = this.activatedRoute.snapshot.data.title;[m
+[32m+[m[32m    this.Task = new Task();[m
+   }[m
+ [m
+[32m+[m[32m  private onDetailsPageSubmit(): void {[m
+[32m+[m[32m    switch (this.title) {[m
+[32m+[m[32m      case "Add Task":[m
+[32m+[m[32m        this.taskListService.addTask(this.Task).subscribe(data => {[m
+[32m+[m[32m          if (data.success) {[m
+[32m+[m[32m            this.flashMessage.show(data.msg, {[m
+[32m+[m[32m              ccsClass: "alert-success",[m
+[32m+[m[32m              timeout: 3000[m
+[32m+[m[32m            });[m
+[32m+[m[32m            this.router.navigate(["/task/task-list"]);[m
+[32m+[m[32m          } else {[m
+[32m+[m[32m            this.flashMessage.show("Add Task Failed", {[m
+[32m+[m[32m              ccsClass: "alert-danger",[m
+[32m+[m[32m              timeout: 3000[m
+[32m+[m[32m            });[m
+[32m+[m[32m            this.router.navigate(["/task/task-list"]);[m
+[32m+[m[32m          }[m
+[32m+[m[32m        });[m
+[32m+[m[32m        break;[m
+[32m+[m
+[32m+[m[32m      case "Edit Task":[m
+[32m+[m[32m        break;[m
+[32m+[m[32m    }[m
+[32m+[m[32m  }[m
+ }[m
+[1mdiff --git a/client/src/app/task/task-list/task-list.component.html b/client/src/app/task/task-list/task-list.component.html[m
+[1mindex b67a27f..f770db8 100644[m
+[1m--- a/client/src/app/task/task-list/task-list.component.html[m
+[1m+++ b/client/src/app/task/task-list/task-list.component.html[m
+[36m@@ -1,46 +1,56 @@[m
+ <div class="container">[m
+[31m-  <br>[m
+[32m+[m[32m  <br />[m
+   <div class="jumbotron">[m
+[31m-<div>[m
+[31m-  <div class="row">[m
+[31m-    <div class="col-md-offset3 col-md-6">[m
+[31m-      <h3>Task List</h3>[m
+[31m-      <br />[m
+[31m-      <a class="btn btn-primary" routerLink="task-list/add" role="button">[m
+[31m-        <i class="fa fa-plus-circle"></i>Add Task</a>[m
+[31m-      <br />[m
+[31m-       <table class="table table-bordered table-striped table-hover">[m
+[31m-        <!--Table Header Row-->[m
+[31m-         <tr>[m
+[31m-          <th class="text-center">Person Name:</th>[m
+[31m-          <th class="text-center">Task Name:</th>[m
+[31m-          <th class="text-center">Description:</th>[m
+[31m-          <th class="text-center">End Date:</th>[m
+[31m-          <th class="text-center"></th>[m
+[31m-          <th class="text-center"></th>[m
+[31m-        [m
+[32m+[m[32m    <div>[m
+[32m+[m[32m      <div class="row">[m
+[32m+[m[32m        <div class="col-md-offset3 col-md-6">[m
+[32m+[m[32m          <h3>Task List</h3>[m
+[32m+[m[32m          <br />[m
+[32m+[m[32m          <a[m
+[32m+[m[32m            class="btn btn-primary"[m
+[32m+[m[32m            routerLink="/task/task-list/add"[m
+[32m+[m[32m            role="button"[m
+[32m+[m[32m          >[m
+[32m+[m[32m            <i class="fa fa-plus-circle"></i>Add Task</a[m
+[32m+[m[32m          >[m
+[32m+[m[32m          <br />[m
+[32m+[m[32m          <table class="table table-bordered table-striped table-hover">[m
+[32m+[m[32m            <!--Table Header Row-->[m
+[32m+[m[32m            <tr>[m
+[32m+[m[32m              <th class="text-center">Person Name:</th>[m
+[32m+[m[32m              <th class="text-center">Task Name:</th>[m
+[32m+[m[32m              <th class="text-center">Description:</th>[m
+[32m+[m[32m              <th class="text-center">End Date:</th>[m
+[32m+[m[32m              <th class="text-center"></th>[m
+[32m+[m[32m              <th class="text-center"></th>[m
+ [m
+[31m-        <!--Repeatable Rows for data-->[m
+[32m+[m[32m              <!--Repeatable Rows for data-->[m
+[32m+[m[32m            </tr>[m
+ [m
+[31m- [m
+[31m-        <tr *ngFor="let task of tasks">[m
+[31m-          <td class="text-centre">{{ Task.Name}}</td>[m
+[31m-          <td class="text-centre">{{ Task.Task}}</td>[m
+[31m-          <td class="text-centre">{{ Task.Description }}</td>[m
+[31m-          <td class="text-centre">{{ Task.Due_Date }}</td>[m
+[31m-          <td class="text-centre">[m
+[31m-            <a routerLink="edit/{{ task._id }}" class="btn btn-primary"><i class="fa fa-pencil">Edit</i> </a>[m
+[31m-          </td>[m
+[32m+[m[32m           

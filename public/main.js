@@ -183,11 +183,12 @@ var AppComponent = /** @class */ (function () {
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
-/*! exports provided: AppModule */
+/*! exports provided: jwtTokenGetter, AppModule */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jwtTokenGetter", function() { return jwtTokenGetter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
@@ -207,12 +208,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./pages/page-not-found/page-not-found.component */ "./src/app/pages/page-not-found/page-not-found.component.ts");
 /* harmony import */ var _pages_project_project_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./pages/project/project.component */ "./src/app/pages/project/project.component.ts");
 /* harmony import */ var _task_task_list_task_list_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./task/task-list/task-list.component */ "./src/app/task/task-list/task-list.component.ts");
-/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
-/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _pages_register_register_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/register/register.component */ "./src/app/pages/register/register.component.ts");
-/* harmony import */ var _pages_login_login_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/login/login.component */ "./src/app/pages/login/login.component.ts");
-/* harmony import */ var _task_task_details_task_details_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./task/task-details/task-details.component */ "./src/app/task/task-details/task-details.component.ts");
-/* harmony import */ var _task_task_delete_task_delete_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./task/task-delete/task-delete.component */ "./src/app/task/task-delete/task-delete.component.ts");
+/* harmony import */ var _pages_register_register_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/register/register.component */ "./src/app/pages/register/register.component.ts");
+/* harmony import */ var _pages_login_login_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/login/login.component */ "./src/app/pages/login/login.component.ts");
+/* harmony import */ var _task_task_details_task_details_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./task/task-details/task-details.component */ "./src/app/task/task-details/task-details.component.ts");
+/* harmony import */ var _task_task_delete_task_delete_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./task/task-delete/task-delete.component */ "./src/app/task/task-delete/task-delete.component.ts");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_22___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_22__);
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
 
 
 
@@ -232,12 +234,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
 //services
 
 
-
-
-
+function jwtTokenGetter() {
+    return localStorage.getItem("id_token");
+}
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -256,18 +262,24 @@ var AppModule = /** @class */ (function () {
                 _pages_page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_15__["PageNotFoundComponent"],
                 _pages_project_project_component__WEBPACK_IMPORTED_MODULE_16__["ProjectComponent"],
                 _task_task_list_task_list_component__WEBPACK_IMPORTED_MODULE_17__["TaskListComponent"],
-                _pages_register_register_component__WEBPACK_IMPORTED_MODULE_19__["RegisterComponent"],
-                _pages_login_login_component__WEBPACK_IMPORTED_MODULE_20__["LoginComponent"],
-                _task_task_details_task_details_component__WEBPACK_IMPORTED_MODULE_21__["TaskDetailsComponent"],
-                _task_task_delete_task_delete_component__WEBPACK_IMPORTED_MODULE_22__["TaskDeleteComponent"]
+                _pages_register_register_component__WEBPACK_IMPORTED_MODULE_18__["RegisterComponent"],
+                _pages_login_login_component__WEBPACK_IMPORTED_MODULE_19__["LoginComponent"],
+                _task_task_details_task_details_component__WEBPACK_IMPORTED_MODULE_20__["TaskDetailsComponent"],
+                _task_task_delete_task_delete_component__WEBPACK_IMPORTED_MODULE_21__["TaskDeleteComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"]
+                angular2_flash_messages__WEBPACK_IMPORTED_MODULE_22__["FlashMessagesModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
+                _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_23__["JwtModule"].forRoot({
+                    config: {
+                        tokenGetter: jwtTokenGetter
+                    }
+                })
             ],
-            providers: [angular2_flash_messages__WEBPACK_IMPORTED_MODULE_18__["FlashMessagesService"]],
+            providers: [angular2_flash_messages__WEBPACK_IMPORTED_MODULE_22__["FlashMessagesService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
         })
     ], AppModule);
@@ -282,16 +294,36 @@ var AppModule = /** @class */ (function () {
 /*!********************************!*\
   !*** ./src/app/models/task.ts ***!
   \********************************/
-/*! exports provided: Task */
+/*! exports provided: ToDoList */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Task", function() { return Task; });
-var Task = /** @class */ (function () {
-    function Task() {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ToDoList", function() { return ToDoList; });
+var ToDoList = /** @class */ (function () {
+    function ToDoList() {
     }
-    return Task;
+    return ToDoList;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/models/user.ts":
+/*!********************************!*\
+  !*** ./src/app/models/user.ts ***!
+  \********************************/
+/*! exports provided: User */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "User", function() { return User; });
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
 }());
 
 
@@ -502,7 +534,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br />\n\n  <div class=\"jumbotron\">\n    <!--Uses bootstraps design to give a clear border round content which is used throughout all pages for consistancy. Placed a personal quote \n      as it makes the homepage look at more busy than a simple paragraph. -->\n\n    <div class=\"row\">\n      <div class=\"col-lg-7\">\n        <h1 class=\"display-bold\">Welcome to Kapilan's Website</h1>\n      </div>\n      <div class=\"col-3\">\n        <div class=\"right\">\n          <img src=\"assets/images/MainLogo.png\" class=\"right\" alt=\"\" />\n        </div>\n      </div>\n    </div>\n\n    <br />\n\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Quote\n      </div>\n      <div class=\"card-body\">\n        <blockquote class=\"blockquote mb-0\">\n          <p>Wandering through life stumbling upon new paths.</p>\n          <footer class=\"blockquote-footer\">Kapilan Santhiramohan</footer>\n        </blockquote>\n      </div>\n    </div>\n    <hr class=\"my-2\" />\n    <br />\n    <br />\n    <h4 class=\"display-5\">Mission:</h4>\n    <p>\n      Create and develop applications that will help change the current industry\n      standard in technology. Making applications that will be incorporated with\n      all technology that we currently today to make it more convenient and have\n      luxurious feel.\n    </p>\n    <p class=\"lead\">\n      <a class=\"btn btn-info btn-lg\" href=\"/about\" role=\"button\">About Me</a>\n      <a class=\"btn btn-info btn-lg\" href=\"./project\" role=\"button\">Projects</a>\n      <a class=\"btn btn-info btn-lg\" href=\"./services\" role=\"button\">Services</a>\n      <a class=\"btn btn-info btn-lg\" href=\"./contact\" role=\"button\">Contact</a>\n      <a class=\"btn btn-primary btn-lg\" href=\"./task/task-list\" role=\"button\">Task List</a>\n    </p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <br />\n\n  <div class=\"jumbotron\">\n    <!--Uses bootstraps design to give a clear border round content which is used throughout all pages for consistancy. Placed a personal quote \n      as it makes the homepage look at more busy than a simple paragraph. -->\n\n    <div class=\"row\">\n      <div class=\"col-lg-7\">\n        <h1 class=\"display-bold\">Welcome to Kapilan's Website</h1>\n      </div>\n      <div class=\"col-3\">\n        <div class=\"right\">\n          <img src=\"assets/images/MainLogo.png\" class=\"right\" alt=\"\" />\n        </div>\n      </div>\n    </div>\n\n    <br />\n\n    <div class=\"card\">\n      <div class=\"card-header\">\n        Quote\n      </div>\n      <div class=\"card-body\">\n        <blockquote class=\"blockquote mb-0\">\n          <p>Wandering through life stumbling upon new paths.</p>\n          <footer class=\"blockquote-footer\">Kapilan Santhiramohan</footer>\n        </blockquote>\n      </div>\n    </div>\n    <hr class=\"my-2\" />\n    <br />\n    <br />\n    <h4 class=\"display-5\">Mission:</h4>\n    <p>\n      Create and develop applications that will help change the current industry\n      standard in technology. Making applications that will be incorporated with\n      all technology that we currently today to make it more convenient and have\n      luxurious feel.\n    </p>\n    <p class=\"lead\">\n      <a class=\"btn btn-info btn-lg\" routerLink=\"/about\" role=\"button\"\n        >About Me</a\n      >\n      <a class=\"btn btn-info btn-lg\" routerLink=\"/project\" role=\"button\"\n        >Projects</a\n      >\n      <a class=\"btn btn-info btn-lg\" routerLink=\"/services\" role=\"button\"\n        >Services</a\n      >\n      <a class=\"btn btn-info btn-lg\" routerLink=\"/contact\" role=\"button\"\n        >Contact</a\n      >\n      <a\n        class=\"btn btn-primary btn-lg\"\n        routerLink=\"/task/task-list\"\n        role=\"button\"\n        >Task List</a\n      >\n    </p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -564,7 +596,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  login works!\n</p>\n"
+module.exports = "<div class=\"jumbotron\" id=\"bodycolour\">\n  <div class=\"row\">\n    <div class=\"col-md-offset-4 col-md-4\">\n      <h1>Please Login</h1>\n      <form>\n        <fieldset class=\"form-group\">\n          <label for=\"\">Username: </label>\n          <input\n            type=\"text\"\n            required\n            class=\"form-control\"\n            name=\"username\"\n            autofocus\n          />\n        </fieldset>\n\n        <fieldset class=\"form-group\">\n          <label for=\"\">Password: </label>\n          <input\n            type=\"password\"\n            required\n            class=\"form-control\"\n            name=\"password\"\n          />\n          or\n          <a routerLink=\"/register\">Register Here</a>\n        </fieldset>\n        <fieldset class=\"form-group text-right\">\n          <input type=\"submit\" class=\"btn btn-success\" value=\"Login\" />\n          <a routerLink=\"/home\">\n            <input type=\"button\" class=\"btn btn-warning\" value=\"Cancel\" />\n          </a>\n        </fieldset>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -738,7 +770,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  register works!\n</p>\n"
+module.exports = "<div class=\"jumbotron\">\n  <div class=\"row\">\n    <div class=\"col-md-offset-4 col-md-4\">\n      <h1>Please Register</h1>\n      <form autocomplete=\"off\" (submit)=\"onRegisterSubmit()\">\n        <fieldset class=\"form-group\">\n          <label for=\"username\">Username:</label>\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            [(ngModel)]=\"user.username\"\n            name=\"username\"\n            placeholder=\"Enter Username\"\n            id=\"username\"\n            required\n            autocomplete=\"off\"\n          />\n        </fieldset>\n        <fieldset class=\"form-group\">\n          <label for=\"password\">Password:</label>\n          <input\n            type=\"password\"\n            class=\"form-control\"\n            [(ngModel)]=\"user.password\"\n            name=\"password\"\n            placeholder=\"Enter Password\"\n            id=\"password\"\n            required\n            autocomplete=\"off\"\n          />\n        </fieldset>\n        <fieldset class=\"form-group\">\n          <label for=\"email\">Email:</label>\n          <input\n            type=\"email\"\n            class=\"form-control\"\n            [(ngModel)]=\"user.email\"\n            name=\"email\"\n            placeholder=\"Enter Email\"\n            id=\"email\"\n            required\n            autocomplete=\"off\"\n          />\n        </fieldset>\n        <fieldset class=\"form-group\">\n          <label for=\"displayName\">Dispaly Name:</label>\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            [(ngModel)]=\"user.displayName\"\n            name=\"displayName\"\n            placeholder=\"Enter Display Name\"\n            id=\"displayName\"\n            required\n            autocomplete=\"off\"\n          />\n        </fieldset>\n        <fieldset class=\"form-group text-right\">\n          <input type=\"submit\" class=\"btn btn-success\" value=\"Register\" />\n          <a routerLink=\"/home\">\n            <input type=\"button\" class=\"btn btn-warning\" value=\"Cancel\" />\n          </a>\n        </fieldset>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -754,20 +786,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_models_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/user */ "./src/app/models/user.ts");
+
+
+
+
 
 
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent() {
+    function RegisterComponent(flashMessage, authService, router) {
+        this.flashMessage = flashMessage;
+        this.authService = authService;
+        this.router = router;
     }
     RegisterComponent.prototype.ngOnInit = function () {
+        this.user = new src_app_models_user__WEBPACK_IMPORTED_MODULE_5__["User"]();
+    };
+    RegisterComponent.prototype.onRegisterSubmit = function () {
+        var _this = this;
+        // register the user
+        this.authService.registerUser(this.user).subscribe(function (data) {
+            if (data.success) {
+                _this.flashMessage.show("You are now registered and can log in", {
+                    cssClass: "alert-success",
+                    timeOut: 3000
+                });
+                _this.router.navigate(["/login"]);
+            }
+            else {
+                _this.flashMessage.show("A registration Error occurred", {
+                    cssClass: "alert-danger",
+                    timeOut: 3000
+                });
+                _this.router.navigate(["/register"]);
+            }
+        });
     };
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-register',
+            selector: "app-register",
             template: __webpack_require__(/*! ./register.component.html */ "./src/app/pages/register/register.component.html"),
             styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/pages/register/register.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__["FlashMessagesService"],
+            src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -974,7 +1041,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = " \n     <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\"> \n         <a class=\"navbar-brand\" href=\"/\"> <img src=\"assets/images/KCU_logo.png\"  alt=\"\"></a>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-icon\"></span>\n        </button> \n \n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n           <ul class=\"navbar-nav ml-auto\">\n           <li class=\"nav-item\">\n              <a class=\"nav-link\" href=\"/\"><i class=\"fa fa-lg fa-home\"></i> Home <span class=\"sr-only\">(current)</span></a>\n            </li>\n             <li class=\"nav-item\">\n              <a class=\"nav-link\" href=\"/about\"><i class=\"fa fa-info-circle\"></i> About</a>\n            </li>\n            <li class=\"nav-item\">\n                <a class=\"nav-link\" href=\"/projects\"><i class=\"fa fa-code\" aria-hidden=\"true\"></i> Projects</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" href=\"/services\"><i class=\"fa fa-cogs\" aria-hidden=\"true\"></i> Services</a>\n              </li>\n               <li class=\"nav-item\">\n                <a class=\"nav-link\" href=\"/education\"><i class=\"fa fa-lg fa-book\"></i> Education</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" href=\"/contact\"><i class=\"fa fa-lg fa-phone\"></i> Contact</a>\n              </li>\n  \n           \n            \n            <!--  <li class=\"navbar-text\"><i class=\"fa fa-user\"></i>\n              Welcome, <%= displayName %> </li>\n              -->\n              <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"/logout\"><i class=\"fas fa-lg fa-sign-out\"></i> Logout</a>\n           </li>\n           <li class=\"nav-item\">\n                <a class=\"nav-link\" href=\"/login\"><i class=\"fas fa-lg fa-sign-in\"></i> Login</a>\n              </li>\n              \n \n              \n          </ul> \n        </div>\n      </nav>  \n    \n      \n    \n\n \n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"/\">\n    <img src=\"assets/images/KCU_logo.png\" alt=\"\"\n  /></a>\n  <button\n    class=\"navbar-toggler\"\n    type=\"button\"\n    data-toggle=\"collapse\"\n    data-target=\"#navbarSupportedContent\"\n    aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\"\n    aria-label=\"Toggle navigation\"\n  >\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/\"\n          ><i class=\"fa fa-lg fa-home\"></i> Home\n          <span class=\"sr-only\">(current)</span></a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/about\"\n          ><i class=\"fa fa-info-circle\"></i> About</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/project\"\n          ><i class=\"fa fa-code\" aria-hidden=\"true\"></i> Projects</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/services\"\n          ><i class=\"fa fa-cogs\" aria-hidden=\"true\"></i> Services</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/education\"\n          ><i class=\"fa fa-lg fa-book\"></i> Education</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/contact\"\n          ><i class=\"fa fa-lg fa-phone\"></i> Contact</a\n        >\n      </li>\n\n      <!--  <li class=\"navbar-text\"><i class=\"fa fa-user\"></i>\n              Welcome, <%= displayName %> </li>\n              -->\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/logout\"\n          ><i class=\"fas fa-lg fa-sign-out\"></i> Logout</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/login\"\n          ><i class=\"fas fa-lg fa-sign-in\"></i> Login</a\n        >\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1012,6 +1079,74 @@ var HeaderComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/auth.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/auth.service.ts ***!
+  \******************************************/
+/*! exports provided: AuthService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @auth0/angular-jwt */ "./node_modules/@auth0/angular-jwt/index.js");
+/* harmony import */ var _models_user__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../models/user */ "./src/app/models/user.ts");
+
+
+
+
+
+var AuthService = /** @class */ (function () {
+    function AuthService(http, jwtService) {
+        this.http = http;
+        this.jwtService = jwtService;
+        this.endpoint = "http://localhost:3000/api/";
+        this.httpOptions = {
+            headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                "Content-Type": "application/json",
+                "Access-Control-All-Origin": "*",
+                "Access-Control-Allows-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+            })
+        };
+        this.user = new _models_user__WEBPACK_IMPORTED_MODULE_4__["User"]();
+    }
+    AuthService.prototype.registerUser = function (user) {
+        return this.http.post(this.endpoint + "register", user, this.httpOptions);
+    };
+    AuthService.prototype.authenticateUser = function (user) {
+        return this.http.post(this.endpoint + "login", user, this.httpOptions);
+    };
+    AuthService.prototype.storeUserDate = function (token, user) {
+        localStorage.setItem("id_token", "Bearer" + token);
+        localStorage.setItem("user", JSON.stringify(user));
+        this.authToken = token;
+        this.user = user;
+    };
+    AuthService.prototype.logout = function () {
+        this.authToken = null;
+        this.user = null;
+        localStorage.clear();
+        return this.http.get(this.endpoint + "logout", this.httpOptions);
+    };
+    AuthService.prototype.loggedIn = function () {
+        return !this.jwtService.isTokenExpired(this.authToken);
+    };
+    AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: "root"
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _auth0_angular_jwt__WEBPACK_IMPORTED_MODULE_3__["JwtHelperService"]])
+    ], AuthService);
+    return AuthService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/task-list.service.ts":
 /*!***********************************************!*\
   !*** ./src/app/services/task-list.service.ts ***!
@@ -1031,21 +1166,33 @@ __webpack_require__.r(__webpack_exports__);
 var TaskListService = /** @class */ (function () {
     function TaskListService(http) {
         this.http = http;
-        this.endpoint = 'http://localhost:3000/api/contact-list';
+        this.endpoint = "http://localhost:3000/api/task-list/";
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
-                'Content-Type': 'application/json',
-                'Access-Control-All-Origin': '*',
-                'Access-Control-Allows-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+                "Content-Type": "application/json",
+                "Access-Control-All-Origin": "*",
+                "Access-Control-Allows-Headers": "Origin, X-Requested-With, Content-Type, Accept"
             })
         };
     }
     TaskListService.prototype.getList = function () {
         return this.http.get(this.endpoint, this.httpOptions);
     };
+    TaskListService.prototype.getTask = function (task) {
+        return this.http.post(this.endpoint + "edit/" + task._id, this.httpOptions);
+    };
+    TaskListService.prototype.addTask = function (task) {
+        return this.http.post(this.endpoint + "add", this.httpOptions);
+    };
+    TaskListService.prototype.editTask = function (task) {
+        return this.http.post(this.endpoint + "edit/" + task._id, task, this.httpOptions);
+    };
+    TaskListService.prototype.deleteTask = function (task) {
+        return this.http.get(this.endpoint + "delete/" + task._id, this.httpOptions);
+    };
     TaskListService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-            providedIn: 'root'
+            providedIn: "root"
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], TaskListService);
@@ -1074,7 +1221,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  task-delete works!\n</p>\n"
+module.exports = ""
 
 /***/ }),
 
@@ -1130,7 +1277,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br>\n  <div class=\"jumbotron\" id=\"bodycolour\">\n\n\n    <h1>{{title}}</h1>\n    <br>\n\n    <!--Allows users to edit table information-->\n    <div class=\"form_size\">\n      <form class=\"form\" (submit)='onDetailsPageSubmit()'>\n        <div class=\"row\">\n          <div class=\"col-sm-3\">\n            <label for=\"name\" class=\"col-form-label\" aria-hidden=\"true\"> Name: </label>\n          </div>\n          <div class=\"col-sm-6\">\n            <input type=\"text\" class=\"form-control form-control-sm\" name=\"name\" required=\"required\" id=\"txt_name\"\n              value=\"{{ Task.Name}}\">\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-sm-3\">\n            <label for=\"task\" class=\"col-form-label\">Task Name: </label>\n          </div>\n          <div class=\"col-sm-6\">\n            <input type=\"text\" class=\"form-control form-control-sm\" name=\"task\" required=\"required\" id=\"txt_task\"\n              value=\"{{ Task.Task}}\">\n          </div>\n        </div>\n        <div class=\"row\">\n          <div class=\"col-sm-3\">\n            <label for=\"email\" class=\"col-form-label\">Description: </label>\n          </div>\n          <div class=\"col-sm-6\">\n\n            <textarea class=\"form-control\" id=\"txt_desc\" name=\"desc\" required=\"required\"\n              rows=\"3\"> {{ Task.Description }}</textarea>\n\n          </div>\n        </div>\n        <br>\n        <div class=\"row\">\n          <div class=\"col-sm-3\">\n\n            <label for=\"number\" class=\"col-form-label\">Due Date: </label>\n          </div>\n          <div class=\"col-sm-6\">\n            <input type=\"String\" class=\"form-control form-control-sm\" name=\"date\" required=\"required\" id=\"txt_date\"\n              value=\"{{ Task.Due_Date}}\">\n          </div>\n        </div>\n        <br>\n\n        <!--Standard form submit and reset buttons with a cell infornt to centralize buttons with form -->\n        <button class=\"btn btn-primary\" id=\"btn_add\" type=\"submit\">{{ title }} </button>\n        <button routerLink=\"/task-list\" class=\"btn btn-warning\" type=\"reset\">Reset </button>\n      </form>\n    </div>\n  </div>\n</div>\n</div>"
+module.exports = "<div class=\"container\">\n  <br />\n  <div class=\"jumbotron\" id=\"bodycolour\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-offset-3 col-md-6\">\n          <h1>{{ title }}</h1>\n\n          <form class=\"form\" (submit)=\"onContactDetailsSubmit()\">\n            <div class=\"form-group\">\n              <label for=\"NameTextField\">Name:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"NameTextField\"\n                name=\"Name\"\n                [(ngModel)]=\"ToDoList.Name\"\n                value=\"{{ ToDoList.Name }}\"\n                required\n              />\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"TaskNameTextField\">Task Name:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"TaskNameTextField\"\n                placeholder=\"\"\n                name=\"task\"\n                [(ngModel)]=\"ToDoList.task\"\n                value=\"{{ ToDoList.task }}\"\n                required\n              />\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"DescriptionTextField\">Description:</label>\n              <textarea\n                type=\"textarea\"\n                class=\"form-control\"\n                id=\"DescriptionTextField\"\n                rows=\"7\"\n                name=\"Description\"\n                [(ngModel)]=\"ToDoList.Description\"\n                value=\"\"\n                required\n                >{{ ToDoList.Description }}</textarea\n              >\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"DateTextField\">Date:</label>\n              <input\n                type=\"date\"\n                class=\"form-control\"\n                id=\"DateTextField\"\n                placeholder=\"Enter Age\"\n                name=\"Due_date\"\n                [(ngModel)]=\"ToDoList.Due_Date\"\n                value=\"{{ ToDoList.Due_Date }}\"\n                required\n              />\n            </div>\n            <div>\n              <button type=\"submit\" class=\"btn btn-primary\">\n                <i class=\"fas fa-edit\"></i> {{ title }}\n              </button>\n              <a routerLink=\"/contact/contact-list\" class=\"btn btn-warning\">\n                <i class=\"fas fa-undo\"></i> Cancel</a\n              >\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1146,15 +1293,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskDetailsComponent", function() { return TaskDetailsComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var src_app_models_task__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/task */ "./src/app/models/task.ts");
+/* harmony import */ var src_app_services_task_list_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/task-list.service */ "./src/app/services/task-list.service.ts");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_models_task__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/task */ "./src/app/models/task.ts");
+
+
+
 
 
 
 var TaskDetailsComponent = /** @class */ (function () {
-    function TaskDetailsComponent() {
+    function TaskDetailsComponent(activatedRoute, flashMessage, taskListService, router) {
+        this.activatedRoute = activatedRoute;
+        this.flashMessage = flashMessage;
+        this.taskListService = taskListService;
+        this.router = router;
     }
     TaskDetailsComponent.prototype.ngOnInit = function () {
-        this.Task = new src_app_models_task__WEBPACK_IMPORTED_MODULE_2__["Task"]();
+        var _this = this;
+        this.title = this.activatedRoute.snapshot.data.title;
+        this.Task = new src_app_models_task__WEBPACK_IMPORTED_MODULE_5__["ToDoList"]();
+        this.activatedRoute.params.subscribe(function (params) {
+            _this.Task._id = params._idl;
+        });
+        if (this.title === "Edit Task") {
+            this.getTask(this.Task);
+        }
+    };
+    TaskDetailsComponent.prototype.getTask = function (task) {
+        var _this = this;
+        this.taskListService.getTask(task).subscribe(function (data) {
+            _this.Task = data.task;
+        });
+    };
+    TaskDetailsComponent.prototype.onDetailsPageSubmit = function () {
+        var _this = this;
+        switch (this.title) {
+            case "Add Task":
+                this.taskListService.addTask(this.Task).subscribe(function (data) {
+                    if (data.success) {
+                        _this.flashMessage.show(data.msg, {
+                            ccsClass: "alert-success",
+                            timeout: 3000
+                        });
+                        _this.router.navigate(["/task/task-list"]);
+                    }
+                    else {
+                        _this.flashMessage.show("Add Task Failed", {
+                            ccsClass: "alert-danger",
+                            timeout: 3000
+                        });
+                        _this.router.navigate(["/task/task-list"]);
+                    }
+                });
+                break;
+            case "Edit Task":
+                this.taskListService.editTask(this.Task).subscribe(function (data) {
+                    if (data.success) {
+                        _this.flashMessage.show(data.msg, {
+                            ccsClass: "alert-success",
+                            timeout: 3000
+                        });
+                        _this.router.navigate(["/task/task-list"]);
+                    }
+                    else {
+                        _this.flashMessage.show("Edit Task Failed", {
+                            ccsClass: "alert-danger",
+                            timeout: 3000
+                        });
+                    }
+                });
+                break;
+        }
     };
     TaskDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1162,7 +1374,10 @@ var TaskDetailsComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./task-details.component.html */ "./src/app/task/task-details/task-details.component.html"),
             styles: [__webpack_require__(/*! ./task-details.component.css */ "./src/app/task/task-details/task-details.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_3__["FlashMessagesService"],
+            src_app_services_task_list_service__WEBPACK_IMPORTED_MODULE_2__["TaskListService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], TaskDetailsComponent);
     return TaskDetailsComponent;
 }());
@@ -1189,7 +1404,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br>\n  <div class=\"jumbotron\">\n<div>\n  <div class=\"row\">\n    <div class=\"col-md-offset3 col-md-6\">\n      <h3>Task List</h3>\n      <br />\n      <a class=\"btn btn-primary\" routerLink=\"task-list/add\" role=\"button\">\n        <i class=\"fa fa-plus-circle\"></i>Add Task</a>\n      <br />\n       <table class=\"table table-bordered table-striped table-hover\">\n        <!--Table Header Row-->\n         <tr>\n          <th class=\"text-center\">Person Name:</th>\n          <th class=\"text-center\">Task Name:</th>\n          <th class=\"text-center\">Description:</th>\n          <th class=\"text-center\">End Date:</th>\n          <th class=\"text-center\"></th>\n          <th class=\"text-center\"></th>\n        \n\n        <!--Repeatable Rows for data-->\n\n \n        <tr *ngFor=\"let task of tasks\">\n          <td class=\"text-centre\">{{ Task.Name}}</td>\n          <td class=\"text-centre\">{{ Task.Task}}</td>\n          <td class=\"text-centre\">{{ Task.Description }}</td>\n          <td class=\"text-centre\">{{ Task.Due_Date }}</td>\n          <td class=\"text-centre\">\n            <a routerLink=\"edit/{{ task._id }}\" class=\"btn btn-primary\"><i class=\"fa fa-pencil\">Edit</i> </a>\n          </td>\n\n          <td class=\"text-centre\">\n            <a routerLink=\"delete/{{ task._id }}\" \n              class=\"btn btn-danger\"><i class=\"fa fa-trash\">Delete</i> </a>\n          </td>\n        </tr>\n\n      </table>  \n    </div>\n  </div>\n</div>\n</div>\n</div>"
+module.exports = "<div class=\"container\">\n  <br />\n  <div class=\"jumbotron\">\n    <div>\n      <div class=\"row\">\n        <div class=\"col-md-offset3 col-md-6\">\n          <h3>Task List</h3>\n          <br />\n          <a\n            class=\"btn btn-primary\"\n            routerLink=\"/task/task-list/add\"\n            role=\"button\"\n          >\n            <i class=\"fa fa-plus-circle\"></i>Add Task</a\n          >\n          <br />\n          <table class=\"table table-bordered table-striped table-hover\">\n            <!--Table Header Row-->\n            <tr>\n              <th class=\"text-center\">ID:</th>\n              <th class=\"text-center\">Person Name:</th>\n              <th class=\"text-center\">Task Name:</th>\n              <th class=\"text-center\">Description:</th>\n              <th class=\"text-center\">End Date:</th>\n              <th class=\"text-center\"></th>\n              <th class=\"text-center\"></th>\n\n              <!--Repeatable Rows for data-->\n            </tr>\n\n            <tr *ngFor=\"let task of tasks\">\n              <td class=\"text-centre\">{{ task._id }}</td>\n              <td class=\"text-centre\">{{ task.Name }}</td>\n              <td class=\"text-centre\">{{ task.task }}</td>\n              <td class=\"text-centre\">{{ task.Description }}</td>\n              <td class=\"text-centre\">{{ task.Due_Date }}</td>\n              <td class=\"text-centre\">\n                <a\n                  routerLink=\"/task/task-list/edit/{{ task._id }}\"\n                  class=\"btn btn-primary\"\n                  ><i class=\"fa fa-pencil\">Edit</i>\n                </a>\n              </td>\n\n              <td class=\"text-centre\">\n                <a\n                  routerLink=\"/task/task-list/delete/{{ task._id }}\"\n                  class=\"btn btn-danger\"\n                  ><i class=\"fa fa-trash\">Delete</i>\n                </a>\n              </td>\n            </tr>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1229,16 +1444,19 @@ var TaskListComponent = /** @class */ (function () {
         this.taskListService.getList().subscribe(function (data) {
             if (data.success) {
                 console.log(data);
-                _this.tasks = data.taskList;
+                _this.tasks = data.ToDoList;
             }
             else {
-                _this.flashMessage.show('User must be logged-in', { cssClass: 'Alert Danger', timeOut: 3000 });
+                _this.flashMessage.show("User must be logged-in", {
+                    cssClass: "Alert Danger",
+                    timeOut: 3000
+                });
             }
         });
     };
     TaskListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-task-list',
+            selector: "app-task-list",
             template: __webpack_require__(/*! ./task-list.component.html */ "./src/app/task/task-list/task-list.component.html"),
             styles: [__webpack_require__(/*! ./task-list.component.css */ "./src/app/task/task-list/task-list.component.css")]
         }),

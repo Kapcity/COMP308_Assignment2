@@ -17,6 +17,7 @@
           <table class="table table-bordered table-striped table-hover">
             <!--Table Header Row-->
             <tr>
+              <th class="text-center">ID:</th>
               <th class="text-center">Person Name:</th>
               <th class="text-center">Task Name:</th>
               <th class="text-center">Description:</th>
@@ -28,15 +29,16 @@
             </tr>
 
             <tr *ngFor="let task of tasks">
-              <td class="text-centre">{{ Task.Name }}</td>
-              <td class="text-centre">{{ Task.Task }}</td>
-              <td class="text-centre">{{ Task.Description }}</td>
-              <td class="text-centre">{{ Task.Due_Date }}</td>
+              <td class="text-centre">{{ task._id }}</td>
+              <td class="text-centre">{{ task.Name }}</td>
+              <td class="text-centre">{{ task.Task }}</td>
+              <td class="text-centre">{{ task.Description }}</td>
+              <td class="text-centre">{{ task.Due_Date }}</td>
               <td class="text-centre">
                 <a
                   routerLink="/task/task-list/edit/{{ task._id }}"
                   class="btn btn-primary"
-                  ><i class="fa fa-pencil">Edit</i>
+                  ><i class="fas fa-pencil"></i>Edit
                 </a>
               </td>
 
@@ -44,7 +46,7 @@
                 <a
                   routerLink="/task/task-list/delete/{{ task._id }}"
                   class="btn btn-danger"
-                  ><i class="fa fa-trash">Delete</i>
+                  ><i class="fa fa-trash"></i>Delete
                 </a>
               </td>
             </tr>

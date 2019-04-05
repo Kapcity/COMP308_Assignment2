@@ -3,8 +3,8 @@ let router = express.Router();
 let passport = require("passport");
 let mongoose = require("mongoose");
 
-let jwt = require('jsonwebtoken');
-let DB = require('../config/db');
+let jwt = require("jsonwebtoken");
+let DB = require("../config/db");
 
 //Define user model
 let usermodel = require("../model/user");
@@ -70,44 +70,46 @@ module.exports.DisplayLogin = (req, res, next) => {
   }
 };
 */
-module.exports.ProcessLogin =  (req, res, next) => {
-  passport.authenticate('local', 
-  (err, user, info) => {
+module.exports.ProcessLogin = (req, res, next) => {
+  passport.authenticate("local", (err, user, info) => {
     // checks for error
-    if(err) {
+    if (err) {
       return next(err);
     }
     //User error check
-    if(!user) {
-//req.flash("loginMessage", "Authentication Error");
-      return res.json({success: false, msg: "Error: Failed to Login"});
+    if (!user) {
+      //req.flash("loginMessage", "Authentication Error");
+      return res.json({ success: false, msg: "Error: Failed to Login" });
     }
-    req.logIn(user, (err) => {
-      if(err) {
+    req.logIn(user, err => {
+      if (err) {
         return next(err);
       }
       const payload = {
         id: user._id,
         displayName: user.displayName,
         username: user.username,
-        email: user,email
-      }
+        email: user.email
+      };
 
       const authToken = jwt.sign(payload, DB.secret, {
         expiresIn: 604800 //1 week
       });
-      return res.json({success: true, msg: "User Logged in Successfully", user: {
-        id: user._id,
-        displayName: user.displayName,
-        username: user.username,
-        email: user.email
-      }, toke: authToken});
+      return res.json({
+        success: true,
+        msg: "User Logged in Successfully",
+        user: {
+          id: user._id,
+          displayName: user.displayName,
+          username: user.username,
+          email: user.email
+        },
+        toke: authToken
+      });
     });
   })(req, res, next);
   console.log(req.body);
-
 };
-
 
 /*
 module.exports.DisplayReg = (req, res, next) => {
@@ -132,19 +134,21 @@ module.exports.ProcessReg = (req, res, next) => {
     displayName: req.body.displayName
   });
 
-  User.register(newUser, req.body.password, (err) => {
+  User.register(newUser, req.body.password, err => {
     if (err) {
       console.log("Error: inserting new user");
 
       if (err.name == "UserExistsError") {
-       
         console.log("Error: User Already Exists");
       }
 
-      return res.json({success: false, msg: "Error: Failed to Register User"});
+      return res.json({
+        success: false,
+        msg: "Error: Failed to Register User"
+      });
     } else {
       //redirect user after method pass
-      return res.json({success: true, msg: "User Registered Successfully"});
+      return res.json({ success: true, msg: "User Registered Successfully" });
     }
   });
 };
@@ -152,5 +156,5 @@ module.exports.LoggoutPost = (req, res, next) => {
   //Logout method
 
   req.logout();
-  return res.json({success: true, msg: "User logged out Successfully"});
+  return res.json({ success: true, msg: "User logged out Successfully" });
 };

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Task } from "../models/task";
+import { ToDoList } from "../models/task";
 import { User } from "../models/user";
 
 @Injectable({
@@ -9,8 +9,9 @@ import { User } from "../models/user";
 })
 export class TaskListService {
   private user: User;
+  private authToken: any = null;
 
-  private endpoint = "http://localhost:3000/api/contact-list/";
+  private endpoint = "http://localhost:3000/api/task-list/";
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -21,24 +22,26 @@ export class TaskListService {
     })
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.user = new User();
+  }
 
   public getList(): Observable<any> {
     return this.http.get<any>(this.endpoint, this.httpOptions);
   }
 
-  public getTask(task: Task): Observable<any> {
-    return this.http.post<any>(
+  public getTask(task: ToDoList): Observable<any> {
+    return this.http.get<any>(
       this.endpoint + "edit/" + task._id,
       this.httpOptions
     );
   }
 
-  public addTask(task: Task): Observable<any> {
-    return this.http.post<any>(this.endpoint + "add", this.httpOptions);
+  public addTask(task: ToDoList): Observable<any> {
+    return this.http.post<any>(this.endpoint + "add", task, this.httpOptions);
   }
 
-  public editTask(task: Task): Observable<any> {
+  public editTask(task: ToDoList): Observable<any> {
     return this.http.post<any>(
       this.endpoint + "edit/" + task._id,
       task,
@@ -46,7 +49,7 @@ export class TaskListService {
     );
   }
 
-  public deleteTask(task: Task): Observable<any> {
+  public deleteTask(task: ToDoList): Observable<any> {
     return this.http.get<any>(
       this.endpoint + "delete/" + task._id,
       this.httpOptions

@@ -1,7 +1,7 @@
-export class Task {
-  _id: String;
-  Name: String;
-  Task: String;
-  Description: String;
-  Due_Date: Date;
+export class ToDoList {
+  _id: string;
+  Name: string;
+  Task: string;
+  Description: string;
+  Due_Date: string;
 }

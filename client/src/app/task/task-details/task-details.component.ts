@@ -1,11 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskListService } from "src/app/services/task-list.service";
-import {
-  FlashMessagesModule,
-  FlashMessagesService
-} from "angular2-flash-messages";
+import { FlashMessagesService } from "angular2-flash-messages";
+
 import { Router, ActivatedRoute } from "@angular/router";
-import { Task } from "src/app/models/task";
+import { ToDoList } from "src/app/models/task";
 
 @Component({
   selector: "app-task-details",
@@ -13,8 +11,8 @@ import { Task } from "src/app/models/task";
   styleUrls: ["./task-details.component.css"]
 })
 export class TaskDetailsComponent implements OnInit {
-  title: String;
-  Task: Task;
+  title: string;
+  task: ToDoList;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,13 +23,27 @@ export class TaskDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.title = this.activatedRoute.snapshot.data.title;
-    this.Task = new Task();
+    this.task = new ToDoList();
+
+    this.activatedRoute.params.subscribe(params => {
+      this.task._id = params.id;
+    });
+
+    if (this.title === "Edit Task") {
+      this.displayTask(this.task);
+    }
   }
 
-  private onDetailsPageSubmit(): void {
+  private displayTask(task: ToDoList): void {
+    this.taskListService.getTask(task).subscribe(data => {
+      this.task = data.task;
+    });
+  }
+
+  public onDetailsPageSubmit(): void {
     switch (this.title) {
       case "Add Task":
-        this.taskListService.addTask(this.Task).subscribe(data => {
+        this.taskListService.addTask(this.task).subscribe(data => {
           if (data.success) {
             this.flashMessage.show(data.msg, {
               ccsClass: "alert-success",
@@ -49,6 +61,26 @@ export class TaskDetailsComponent implements OnInit {
         break;
 
       case "Edit Task":
+        this.taskListService.editTask(this.task).subscribe(data => {
+          if (data.success) {
+            // this.flashMessage.show(data.msg, {
+            //   ccsClass: "alert-success",
+            //   timeout: 3000
+            // });
+
+            console.log("Shit is working");
+            this.router.navigate(["/task/task-list"]);
+          } else {
+            // this.flashMessage.show("Edit Task Failed", {
+            //   ccsClass: "alert-danger",
+            //   timeout: 3000
+            // });
+
+            console.log("Shit not working");
+            this.router.navigate(["/task/task-list"]);
+          }
+        });
+
         break;
     }
   }
