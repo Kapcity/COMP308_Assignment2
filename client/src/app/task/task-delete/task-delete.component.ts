@@ -34,16 +34,10 @@ export class TaskDeleteComponent implements OnInit {
   private deleteContact(task: ToDoList): void {
     this.taskListService.deleteTask(task).subscribe(data => {
       if (data.success) {
-        this.flashMessage.show(data.msg, {
-          cssClass: "alert-warning",
-          timeOut: 3000
-        });
+        console.log("deleted");
         this.router.navigate(["/task/task-list"]);
       } else {
-        this.flashMessage.show("Delete Contact Failed", {
-          cssClass: "alert-danger",
-          timeOut: 3000
-        });
+        console.log("not deleted");
         this.router.navigate(["/task/task-list"]);
       }
     });

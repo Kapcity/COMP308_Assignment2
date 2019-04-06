@@ -32,10 +32,10 @@ module.exports.AddTask = (req, res, next) => {
 //on click adds to the list
 module.exports.AddPost = (req, res, next) => {
   let newTask = todo({
-    Name: req.body.name,
-    Task: req.body.task,
-    Description: req.body.desc,
-    Due_Date: req.body.date
+    Name: req.body.Name,
+    Task: req.body.Task,
+    Description: req.body.Description,
+    Due_Date: req.body.Due_Date
   });
   todo.create(newTask, (err, todo) => {
     if (err) {
@@ -71,21 +71,24 @@ module.exports.EditPost = (req, res, next) => {
 
   let updateTask = todo({
     _id: id,
-    Name: req.body.name,
-    Task: req.body.task,
-    Description: req.body.desc,
-    Due_Date: req.body.date
+    Name: req.body.Name,
+    Task: req.body.Task,
+    Description: req.body.Description,
+    Due_Date: req.body.Due_Date
   });
 
-  // todo.update({ _id: id }, updateTask, (err) => {
-  //   if (err) {
-  //     console.log(err);
-  //     res.end(err);
-  //   }
-  //   else {
-  //     return res.json({success: true, msg: "Successfully updated task", task: TaskObject});
-  //   }
-  // })
+  todo.update({ _id: id }, updateTask, err => {
+    if (err) {
+      console.log(err);
+      res.end(err);
+    } else {
+      return res.json({
+        success: true,
+        msg: "Successfully updated task",
+        task: TaskObject
+      });
+    }
+  });
 };
 
 //get request for delete on the database

@@ -45,16 +45,10 @@ export class TaskDetailsComponent implements OnInit {
       case "Add Task":
         this.taskListService.addTask(this.task).subscribe(data => {
           if (data.success) {
-            this.flashMessage.show(data.msg, {
-              ccsClass: "alert-success",
-              timeout: 3000
-            });
+            console.log("Task Has been Added");
             this.router.navigate(["/task/task-list"]);
           } else {
-            this.flashMessage.show("Add Task Failed", {
-              ccsClass: "alert-danger",
-              timeout: 3000
-            });
+            console.log("Could not add task");
             this.router.navigate(["/task/task-list"]);
           }
         });
@@ -68,7 +62,7 @@ export class TaskDetailsComponent implements OnInit {
             //   timeout: 3000
             // });
 
-            console.log("Shit is working");
+            console.log("Editted Task");
             this.router.navigate(["/task/task-list"]);
           } else {
             // this.flashMessage.show("Edit Task Failed", {
@@ -76,7 +70,7 @@ export class TaskDetailsComponent implements OnInit {
             //   timeout: 3000
             // });
 
-            console.log("Shit not working");
+            console.log("Still doesnt work");
             this.router.navigate(["/task/task-list"]);
           }
         });

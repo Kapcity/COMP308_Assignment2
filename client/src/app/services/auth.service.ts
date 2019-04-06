@@ -38,10 +38,12 @@ export class AuthService {
     return this.http.post<any>(this.endpoint + "login", user, this.httpOptions);
   }
 
-  public storeUserData(token: any, user: User): void {
-    localStorage.setItem("id_token", "Bearer " + token);
+  //public storeUserData(token: any, user: User): void {
+  public storeUserData(user: User): void {
+    //localStorage.setItem("id_token", "Bearer " + token);
     localStorage.setItem("user", JSON.stringify(user));
-    this.authToken = token;
+    //this.authToken = token;
+    this.authToken = user.username;
     this.user = user;
   }
 
