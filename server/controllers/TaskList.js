@@ -84,8 +84,7 @@ module.exports.EditPost = (req, res, next) => {
     } else {
       return res.json({
         success: true,
-        msg: "Successfully updated task",
-        task: TaskObject
+        msg: "Successfully updated task"
       });
     }
   });
