@@ -95,7 +95,7 @@ var routes = [
         data: { title: "Edit Task" }
     },
     {
-        path: "task/task-list/delete",
+        path: "task/task-list/delete/:id",
         component: _task_task_delete_task_delete_component__WEBPACK_IMPORTED_MODULE_12__["TaskDeleteComponent"],
         data: { title: "Delete Task" }
     },
@@ -143,7 +143,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-header></app-header>\n<!--The content below is only a placeholder and can be replaced.-->\n<router-outlet></router-outlet>\n<app-footer></app-footer>\n"
+module.exports = "<div class=\"body\">\n  <app-header></app-header>\n\n  <!--The content below is only a placeholder and can be replaced.-->\n  <router-outlet></router-outlet>\n\n  <app-footer></app-footer>\n</div>\n"
 
 /***/ }),
 
@@ -410,7 +410,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n    <br>\r\n    <div class=\"jumbotron\" id=\"bodycolour\">\r\n        <!--Gives viewer the option to call-->\r\n\r\n        <h1>Contact</h1>\r\n        <br>\r\n        <h4>Call:</h4>\r\n        <p>Mobile: 647-406-2773 <br> Home: 416-754-2851 <br> Email: ksanthi1@my.centennialcollege.ca</p>\r\n        <br>\r\n        <h4>Email:</h4>\r\n        <!--Gives viewer the option to email when they fill out the form which should be redirected to email address at a later point in time-->\r\n        <div class=\"form_size\">\r\n            <form class=\"form\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-3\">\r\n                        <label for=\"first\" class=\"col-form-label\" aria-hidden=\"true\"> First Name: </label>\r\n                    </div>\r\n                    <div class=\"col-sm-6\">\r\n                        <input type=\"text\" class=\"form-control form-control-sm\" required=\"required\" id=\"txt_first\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-3\">\r\n                        <label for=\"last\" class=\"col-form-label\">Last Name: </label>\r\n                    </div>\r\n                    <div class=\"col-sm-6\">\r\n                        <input type=\"text\" class=\"form-control form-control-sm\" required=\"required\" id=\"txt_last\">\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-3\">\r\n                        <label for=\"email\" class=\"col-form-label\">Email: </label>\r\n                    </div>\r\n                    <div class=\"col-sm-6\">\r\n\r\n                        <input type=\"email\" class=\"form-control form-control-sm\" required=\"required\" id=\"txt_email\">\r\n\r\n                    </div>\r\n                </div>\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-3\">\r\n                        <label for=\"number\" class=\"col-form-label\">Phone Number: </label>\r\n                    </div>\r\n                    <div class=\"col-sm-6\">\r\n                        <input type=\"number\" class=\"form-control form-control-sm\" required=\"required\" id=\"txt_number\">\r\n                    </div>\r\n                </div>\r\n\r\n                <div class=\"row\">\r\n                    <div class=\"col-sm-3\">\r\n                        <label for=\"txt_message\" class=\"col-form-label\">Message: </label>\r\n                    </div>\r\n                    <div class=\"col-sm-6\">\r\n                        <textarea class=\"form-control\" id=\"txt_message\" required=\"required\" rows=\"3\"></textarea>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n\r\n\r\n                <!--Standard form submit and reset buttons with a cell infornt to centralize buttons with form -->\r\n                <button class=\"btn btn-primary\" id=\"btn_submit\" type=\"submit\">Submit </button>\r\n                <button class=\"btn btn-primary\" type=\"reset\">Reset </button>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <br />\r\n  <div class=\"jumbotron\" id=\"bodycolour\">\r\n    <!--Gives viewer the option to call-->\r\n\r\n    <h1>Contact</h1>\r\n    <br />\r\n    <h4>Call:</h4>\r\n    <p>\r\n      Mobile: 647-406-2773 <br />\r\n      Home: 416-754-2851 <br />\r\n      Email: ksanthi1@my.centennialcollege.ca\r\n    </p>\r\n    <br />\r\n    <h4>Email:</h4>\r\n    <!--Gives viewer the option to email when they fill out the form which should be redirected to email address at a later point in time-->\r\n    <div class=\"form_size\">\r\n      <form class=\"form\">\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-3\">\r\n            <label for=\"first\" class=\"col-form-label\" aria-hidden=\"true\">\r\n              First Name:\r\n            </label>\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <input\r\n              type=\"text\"\r\n              class=\"form-control form-control-sm\"\r\n              required=\"required\"\r\n              id=\"txt_first\"\r\n            />\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-3\">\r\n            <label for=\"last\" class=\"col-form-label\">Last Name: </label>\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <input\r\n              type=\"text\"\r\n              class=\"form-control form-control-sm\"\r\n              required=\"required\"\r\n              id=\"txt_last\"\r\n            />\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-3\">\r\n            <label for=\"email\" class=\"col-form-label\">Email: </label>\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <input\r\n              type=\"email\"\r\n              class=\"form-control form-control-sm\"\r\n              required=\"required\"\r\n              id=\"txt_email\"\r\n            />\r\n          </div>\r\n        </div>\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-3\">\r\n            <label for=\"number\" class=\"col-form-label\">Phone Number: </label>\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <input\r\n              type=\"number\"\r\n              class=\"form-control form-control-sm\"\r\n              required=\"required\"\r\n              id=\"txt_number\"\r\n            />\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row\">\r\n          <div class=\"col-sm-3\">\r\n            <label for=\"txt_message\" class=\"col-form-label\">Message: </label>\r\n          </div>\r\n          <div class=\"col-sm-6\">\r\n            <textarea\r\n              class=\"form-control\"\r\n              id=\"txt_message\"\r\n              required=\"required\"\r\n              rows=\"3\"\r\n            ></textarea>\r\n          </div>\r\n        </div>\r\n        <br />\r\n\r\n        <!--Standard form submit and reset buttons with a cell infornt to centralize buttons with form -->\r\n        <button\r\n          class=\"btn btn-primary\"\r\n          id=\"btn_submit\"\r\n          routerLink=\"/home\"\r\n          type=\"submit\"\r\n        >\r\n          Submit\r\n        </button>\r\n        <button class=\"btn btn-primary\" type=\"reset\">Reset</button>\r\n      </form>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -596,7 +596,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"jumbotron\" id=\"bodycolour\">\n  <div class=\"row\">\n    <div class=\"col-md-offset-4 col-md-4\">\n      <h1>Please Login</h1>\n      <form>\n        <fieldset class=\"form-group\">\n          <label for=\"\">Username: </label>\n          <input\n            type=\"text\"\n            required\n            class=\"form-control\"\n            name=\"username\"\n            autofocus\n          />\n        </fieldset>\n\n        <fieldset class=\"form-group\">\n          <label for=\"\">Password: </label>\n          <input\n            type=\"password\"\n            required\n            class=\"form-control\"\n            name=\"password\"\n          />\n          or\n          <a routerLink=\"/register\">Register Here</a>\n        </fieldset>\n        <fieldset class=\"form-group text-right\">\n          <input type=\"submit\" class=\"btn btn-success\" value=\"Login\" />\n          <a routerLink=\"/home\">\n            <input type=\"button\" class=\"btn btn-warning\" value=\"Cancel\" />\n          </a>\n        </fieldset>\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"jumbotron\" id=\"bodycolour\">\n  <div class=\"row\">\n    <div class=\"col-md-offset-4 col-md-4\">\n      <h1>Please Login</h1>\n      <form autocomplete=\"off\" (submit)=\"onLoginSubmit()\">\n        <fieldset class=\"form-group\">\n          <label for=\"username\">Username:</label>\n          <input\n            type=\"text\"\n            class=\"form-control\"\n            [(ngModel)]=\"user.username\"\n            name=\"username\"\n            placeholder=\"Enter Username\"\n            id=\"username\"\n            required\n            autofocus\n            autocomplete=\"off\"\n          />\n        </fieldset>\n        <fieldset class=\"form-group\">\n          <label for=\"password\">Password:</label>\n          <input\n            type=\"password\"\n            class=\"form-control\"\n            [(ngModel)]=\"user.password\"\n            name=\"password\"\n            placeholder=\"Enter Password\"\n            id=\"password\"\n            required\n            autocomplete=\"off\"\n          />\n          or\n          <a routerLink=\"/register\">Register Here</a>\n        </fieldset>\n        <fieldset class=\"form-group text-right\">\n          <button type=\"submit\" class=\"btn btn-success\" value=\"Login\">\n            Login\n          </button>\n          <input type=\"button\" class=\"btn btn-warning\" value=\"Cancel\" />\n        </fieldset>\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -612,20 +612,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_models_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/user */ "./src/app/models/user.ts");
+
+
+
+
 
 
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(flashMessage, authService, router) {
+        this.flashMessage = flashMessage;
+        this.authService = authService;
+        this.router = router;
     }
     LoginComponent.prototype.ngOnInit = function () {
+        this.user = new src_app_models_user__WEBPACK_IMPORTED_MODULE_5__["User"]();
+    };
+    LoginComponent.prototype.onLoginSubmit = function () {
+        var _this = this;
+        this.authService.authenticateUser(this.user).subscribe(function (data) {
+            if (data.success) {
+                // this.authService.storeUserData(data.token, data.user);
+                _this.authService.storeUserData(data.user);
+                // this.flashMessage.show(data.msg, {
+                //   cssClass: "alert-success",
+                //   timeOut: 3000
+                // });
+                console.log("correct");
+                _this.router.navigate(["/home"]);
+            }
+            else {
+                // this.flashMessage.show(data.msg, {
+                //   cssClass: "alert-danger",
+                //   timeOut: 3000
+                // });
+                console.log("invalid issue");
+                _this.router.navigate(["/login"]);
+            }
+        });
     };
     LoginComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-login',
+            selector: "app-login",
             template: __webpack_require__(/*! ./login.component.html */ "./src/app/pages/login/login.component.html"),
             styles: [__webpack_require__(/*! ./login.component.css */ "./src/app/pages/login/login.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__["FlashMessagesService"],
+            src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -811,17 +849,19 @@ var RegisterComponent = /** @class */ (function () {
         // register the user
         this.authService.registerUser(this.user).subscribe(function (data) {
             if (data.success) {
-                _this.flashMessage.show("You are now registered and can log in", {
-                    cssClass: "alert-success",
-                    timeOut: 3000
-                });
+                // this.flashMessage.show("You are now registered and can log in", {
+                //   cssClass: "alert-success",
+                //   timeOut: 3000
+                // });
+                console.log("Ey u registered. Lit");
                 _this.router.navigate(["/login"]);
             }
             else {
-                _this.flashMessage.show("A registration Error occurred", {
-                    cssClass: "alert-danger",
-                    timeOut: 3000
-                });
+                // this.flashMessage.show("A registration Error occurred", {
+                //   cssClass: "alert-danger",
+                //   timeOut: 3000
+                // });
+                console.log("You a bean");
                 _this.router.navigate(["/register"]);
             }
         });
@@ -861,7 +901,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n        <br>\r\n          <div class=\"jumbotron\">\r\n      \r\n       \r\n              <div>\r\n              <h3>Services</h3>\r\n              </div>\r\n              <br>\r\n      <!-- Creates table with one side lauguages then the other side an image of codeing for viewers to relate to -->\r\n      <div class=\"row\">\r\n          <div class=\"col-8\">      \r\n                  <table style=\"width:90%\">\r\n              <tr>\r\n                  <th>Languages</th>\r\n                  \r\n              </tr>\r\n              <tr>\r\n                  <td>C#, Java, Unix, Phython, ASP.Net</td>\r\n              </tr>\r\n              <tr>\r\n                  <td>HTML, CSS, JavaScript</td>\r\n              </tr>\r\n              <tr>\r\n                  <td> SQL, SQLite, PLSQL</td>\r\n              </tr>\r\n              <tr>\r\n                  <td> Express Js, Node Js, Angular</td>\r\n              </tr>\r\n      \r\n              <br>\r\n              </table>\r\n          </div>\r\n          <div class=\"col-4\">\r\n          <br>\r\n          <br>\r\n          <img src=\"assets/images/coding.jpg\" class=\"img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}\" alt=\"\">\r\n          </div>\r\n      </div>\r\n              <br>\r\n              <br>\r\n              <!-- Creates table with one side services then the other side an image of development for viewers to relate to -->\r\n      <div class=\"row\">\r\n          <div class=\"col-8\"> \r\n              <table style=\"width:90%\">\r\n              <tr>\r\n                  <th class=\"display-bold\">Services</th>\r\n              </tr>\r\n              <tr>\r\n                  <td>Webdesign</td>\r\n              </tr>\r\n              <tr>\r\n                  <td>Android Developer</td>\r\n              </tr>\r\n              <tr>\r\n                  <td>Database Managaer</td>\r\n              </tr>\r\n              <tr>\r\n                  <td>Client Care</td>\r\n              </tr>\r\n              <tr>\r\n                  <td>Software Developer</td>\r\n              </tr>\r\n              </table>\r\n          </div>\r\n          <div class=\"col-4\">\r\n          <br>\r\n          <br>\r\n          <img src=\"assets/images/dev.jpg\" class=\"img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}\" alt=\"\">\r\n          </div>\r\n      </div>\r\n      \r\n      \r\n          </div>\r\n      </div>\r\n      \r\n      "
+module.exports = "<div class=\"container\">\r\n  <br />\r\n  <div class=\"jumbotron\">\r\n    <div>\r\n      <h3>Services</h3>\r\n    </div>\r\n    <br />\r\n    <!-- Creates table with one side lauguages then the other side an image of codeing for viewers to relate to -->\r\n    <div class=\"row\">\r\n      <div class=\"col-8\">\r\n        <table style=\"width:90%\">\r\n          <tr>\r\n            <th>Languages</th>\r\n          </tr>\r\n          <tr>\r\n            <td>C#, Java, Unix, Python, ASP.Net</td>\r\n          </tr>\r\n          <tr>\r\n            <td>HTML, CSS, JavaScript</td>\r\n          </tr>\r\n          <tr>\r\n            <td>SQL, SQLite, PLSQL</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Express Js, Node Js, Angular</td>\r\n          </tr>\r\n\r\n          <br />\r\n        </table>\r\n      </div>\r\n      <div class=\"col-4\">\r\n        <br />\r\n        <br />\r\n        <img\r\n          src=\"assets/images/coding.jpg\"\r\n          class=\"img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}\"\r\n          alt=\"\"\r\n        />\r\n      </div>\r\n    </div>\r\n    <br />\r\n    <br />\r\n    <!-- Creates table with one side services then the other side an image of development for viewers to relate to -->\r\n    <div class=\"row\">\r\n      <div class=\"col-8\">\r\n        <table style=\"width:90%\">\r\n          <tr>\r\n            <th class=\"display-bold\">Services</th>\r\n          </tr>\r\n          <tr>\r\n            <td>Webdesign</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Android Developer</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Database Manager</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Client Care</td>\r\n          </tr>\r\n          <tr>\r\n            <td>Software Developer</td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-4\">\r\n        <br />\r\n        <br />\r\n        <img\r\n          src=\"assets/images/dev.jpg\"\r\n          class=\"img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}\"\r\n          alt=\"\"\r\n        />\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1041,7 +1081,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"/\">\n    <img src=\"assets/images/KCU_logo.png\" alt=\"\"\n  /></a>\n  <button\n    class=\"navbar-toggler\"\n    type=\"button\"\n    data-toggle=\"collapse\"\n    data-target=\"#navbarSupportedContent\"\n    aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\"\n    aria-label=\"Toggle navigation\"\n  >\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/\"\n          ><i class=\"fa fa-lg fa-home\"></i> Home\n          <span class=\"sr-only\">(current)</span></a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/about\"\n          ><i class=\"fa fa-info-circle\"></i> About</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/project\"\n          ><i class=\"fa fa-code\" aria-hidden=\"true\"></i> Projects</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/services\"\n          ><i class=\"fa fa-cogs\" aria-hidden=\"true\"></i> Services</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/education\"\n          ><i class=\"fa fa-lg fa-book\"></i> Education</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/contact\"\n          ><i class=\"fa fa-lg fa-phone\"></i> Contact</a\n        >\n      </li>\n\n      <!--  <li class=\"navbar-text\"><i class=\"fa fa-user\"></i>\n              Welcome, <%= displayName %> </li>\n              -->\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/logout\"\n          ><i class=\"fas fa-lg fa-sign-out\"></i> Logout</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/login\"\n          ><i class=\"fas fa-lg fa-sign-in\"></i> Login</a\n        >\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\n  <a class=\"navbar-brand\" href=\"/\">\n    <img src=\"assets/images/KCU_logo.png\" alt=\"\"\n  /></a>\n  <button\n    class=\"navbar-toggler\"\n    type=\"button\"\n    data-toggle=\"collapse\"\n    data-target=\"#navbarSupportedContent\"\n    aria-controls=\"navbarSupportedContent\"\n    aria-expanded=\"false\"\n    aria-label=\"Toggle navigation\"\n  >\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav ml-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/\"\n          ><i class=\"fa fa-lg fa-home\"></i> Home\n          <span class=\"sr-only\">(current)</span></a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/about\"\n          ><i class=\"fa fa-info-circle\"></i> About</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/project\"\n          ><i class=\"fa fa-code\" aria-hidden=\"true\"></i> Projects</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/services\"\n          ><i class=\"fa fa-cogs\" aria-hidden=\"true\"></i> Services</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/education\"\n          ><i class=\"fa fa-lg fa-book\"></i> Education</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/contact\"\n          ><i class=\"fa fa-lg fa-phone\"></i> Contact</a\n        >\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" routerLink=\"/task/task-list\">\n          <i class=\"fa fa-lg fa-list\"></i> Task List</a\n        >\n      </li>\n\n      <li class=\"nav-item\">\n        <a routerLink=\"/logout\" class=\"nav-link\">\n          <i class=\"fas fa-lg fa-sign-out-alt\"></i> Logout</a\n        >\n      </li>\n\n      <li class=\"nav-item\">\n        <a routerLink=\"/login\" class=\"nav-link\">\n          <i class=\"fas fa-lg fa-sign-in-alt\"></i> Login</a\n        >\n      </li>\n\n      <li\n        *ngIf=\"isLoggedIn()\"\n        class=\"navbar-text text-success ml-5 mr-5 d-none d-lg-inline\"\n      >\n        <i class=\"fas fa-lg fa-user\"></i> Welcome, {{ user.displayName }}\n      </li>\n    </ul>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -1057,20 +1097,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HeaderComponent", function() { return HeaderComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_models_user__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/models/user */ "./src/app/models/user.ts");
+
+
+
+
 
 
 var HeaderComponent = /** @class */ (function () {
-    function HeaderComponent() {
+    function HeaderComponent(flashMessage, authService, router) {
+        this.flashMessage = flashMessage;
+        this.authService = authService;
+        this.router = router;
     }
     HeaderComponent.prototype.ngOnInit = function () {
+        this.user = new src_app_models_user__WEBPACK_IMPORTED_MODULE_5__["User"]();
+    };
+    HeaderComponent.prototype.onLogoutClick = function () {
+        var _this = this;
+        this.authService.logout().subscribe(function (data) {
+            _this.flashMessage.show(data.msg, {
+                cssClass: "alert-warning",
+                timeOut: 5000
+            });
+            _this.router.navigate(["/login"]);
+        });
+    };
+    HeaderComponent.prototype.isLoggedIn = function () {
+        var result = this.authService.loggedIn();
+        if (result) {
+            this.user = JSON.parse(localStorage.getItem("user"));
+        }
+        return result;
     };
     HeaderComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-header',
+            selector: "app-header",
             template: __webpack_require__(/*! ./header.component.html */ "./src/app/partials/header/header.component.html"),
             styles: [__webpack_require__(/*! ./header.component.css */ "./src/app/partials/header/header.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [angular2_flash_messages__WEBPACK_IMPORTED_MODULE_2__["FlashMessagesService"],
+            src_app_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
     ], HeaderComponent);
     return HeaderComponent;
 }());
@@ -1103,7 +1175,8 @@ var AuthService = /** @class */ (function () {
     function AuthService(http, jwtService) {
         this.http = http;
         this.jwtService = jwtService;
-        this.endpoint = "http://localhost:3000/api/";
+        // private endpoint = "http://localhost:3000/api/";
+        this.endpoint = "https://comp308-assignment2-kapilan.herokuapp.com/api/";
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 "Content-Type": "application/json",
@@ -1119,10 +1192,12 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.authenticateUser = function (user) {
         return this.http.post(this.endpoint + "login", user, this.httpOptions);
     };
-    AuthService.prototype.storeUserDate = function (token, user) {
-        localStorage.setItem("id_token", "Bearer" + token);
+    //public storeUserData(token: any, user: User): void {
+    AuthService.prototype.storeUserData = function (user) {
+        //localStorage.setItem("id_token", "Bearer " + token);
         localStorage.setItem("user", JSON.stringify(user));
-        this.authToken = token;
+        //this.authToken = token;
+        this.authToken = user.username;
         this.user = user;
     };
     AuthService.prototype.logout = function () {
@@ -1160,13 +1235,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _models_user__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../models/user */ "./src/app/models/user.ts");
+
 
 
 
 var TaskListService = /** @class */ (function () {
     function TaskListService(http) {
         this.http = http;
-        this.endpoint = "http://localhost:3000/api/task-list/";
+        this.authToken = null;
+        //  private endpoint = "http://localhost:3000/api/task-list/";
+        this.endpoint = "https://comp308-assignment2-kapilan.herokuapp.com/api/task-list/";
         this.httpOptions = {
             headers: new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
                 "Content-Type": "application/json",
@@ -1174,15 +1253,16 @@ var TaskListService = /** @class */ (function () {
                 "Access-Control-Allows-Headers": "Origin, X-Requested-With, Content-Type, Accept"
             })
         };
+        this.user = new _models_user__WEBPACK_IMPORTED_MODULE_3__["User"]();
     }
     TaskListService.prototype.getList = function () {
         return this.http.get(this.endpoint, this.httpOptions);
     };
     TaskListService.prototype.getTask = function (task) {
-        return this.http.post(this.endpoint + "edit/" + task._id, this.httpOptions);
+        return this.http.get(this.endpoint + "edit/" + task._id, this.httpOptions);
     };
     TaskListService.prototype.addTask = function (task) {
-        return this.http.post(this.endpoint + "add", this.httpOptions);
+        return this.http.post(this.endpoint + "add", task, this.httpOptions);
     };
     TaskListService.prototype.editTask = function (task) {
         return this.http.post(this.endpoint + "edit/" + task._id, task, this.httpOptions);
@@ -1237,20 +1317,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskDeleteComponent", function() { return TaskDeleteComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_models_task__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/models/task */ "./src/app/models/task.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular2-flash-messages */ "./node_modules/angular2-flash-messages/module/index.js");
+/* harmony import */ var angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var src_app_services_task_list_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/task-list.service */ "./src/app/services/task-list.service.ts");
+
+
+
+
 
 
 var TaskDeleteComponent = /** @class */ (function () {
-    function TaskDeleteComponent() {
+    function TaskDeleteComponent(activatedRoute, flashMessage, taskListService, router) {
+        this.activatedRoute = activatedRoute;
+        this.flashMessage = flashMessage;
+        this.taskListService = taskListService;
+        this.router = router;
     }
     TaskDeleteComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.title = this.activatedRoute.snapshot.data.title;
+        this.task = new src_app_models_task__WEBPACK_IMPORTED_MODULE_2__["ToDoList"]();
+        this.activatedRoute.params.subscribe(function (params) {
+            _this.task._id = params.id;
+        });
+        this.deleteContact(this.task);
+    };
+    TaskDeleteComponent.prototype.deleteContact = function (task) {
+        var _this = this;
+        this.taskListService.deleteTask(task).subscribe(function (data) {
+            if (data.success) {
+                console.log("deleted");
+                _this.router.navigate(["/task/task-list"]);
+            }
+            else {
+                console.log("not deleted");
+                _this.router.navigate(["/task/task-list"]);
+            }
+        });
     };
     TaskDeleteComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-task-delete',
+            selector: "app-task-delete",
             template: __webpack_require__(/*! ./task-delete.component.html */ "./src/app/task/task-delete/task-delete.component.html"),
             styles: [__webpack_require__(/*! ./task-delete.component.css */ "./src/app/task/task-delete/task-delete.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            angular2_flash_messages__WEBPACK_IMPORTED_MODULE_4__["FlashMessagesService"],
+            src_app_services_task_list_service__WEBPACK_IMPORTED_MODULE_5__["TaskListService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])
     ], TaskDeleteComponent);
     return TaskDeleteComponent;
 }());
@@ -1277,7 +1393,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br />\n  <div class=\"jumbotron\" id=\"bodycolour\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-offset-3 col-md-6\">\n          <h1>{{ title }}</h1>\n\n          <form class=\"form\" (submit)=\"onContactDetailsSubmit()\">\n            <div class=\"form-group\">\n              <label for=\"NameTextField\">Name:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"NameTextField\"\n                name=\"Name\"\n                [(ngModel)]=\"ToDoList.Name\"\n                value=\"{{ ToDoList.Name }}\"\n                required\n              />\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"TaskNameTextField\">Task Name:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"TaskNameTextField\"\n                placeholder=\"\"\n                name=\"task\"\n                [(ngModel)]=\"ToDoList.task\"\n                value=\"{{ ToDoList.task }}\"\n                required\n              />\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"DescriptionTextField\">Description:</label>\n              <textarea\n                type=\"textarea\"\n                class=\"form-control\"\n                id=\"DescriptionTextField\"\n                rows=\"7\"\n                name=\"Description\"\n                [(ngModel)]=\"ToDoList.Description\"\n                value=\"\"\n                required\n                >{{ ToDoList.Description }}</textarea\n              >\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"DateTextField\">Date:</label>\n              <input\n                type=\"date\"\n                class=\"form-control\"\n                id=\"DateTextField\"\n                placeholder=\"Enter Age\"\n                name=\"Due_date\"\n                [(ngModel)]=\"ToDoList.Due_Date\"\n                value=\"{{ ToDoList.Due_Date }}\"\n                required\n              />\n            </div>\n            <div>\n              <button type=\"submit\" class=\"btn btn-primary\">\n                <i class=\"fas fa-edit\"></i> {{ title }}\n              </button>\n              <a routerLink=\"/contact/contact-list\" class=\"btn btn-warning\">\n                <i class=\"fas fa-undo\"></i> Cancel</a\n              >\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <br />\n  <div class=\"jumbotron\" id=\"bodycolour\">\n    <div class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-offset-3 col-md-6\">\n          <h1>{{ title }}</h1>\n\n          <form class=\"form\" (submit)=\"onDetailsPageSubmit()\">\n            <div class=\"form-group\">\n              <label for=\"NameTextField\">Name:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"NameTextField\"\n                name=\"Name\"\n                [(ngModel)]=\"task.Name\"\n                value=\"{{ task.Name }}\"\n                required\n              />\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"TaskNameTextField\">Task Name:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"TaskNameTextField\"\n                placeholder=\"\"\n                name=\"task\"\n                [(ngModel)]=\"task.Task\"\n                value=\"{{ task.Task }}\"\n                required\n              />\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"DescriptionTextField\">Description:</label>\n              <textarea\n                type=\"textarea\"\n                class=\"form-control\"\n                id=\"DescriptionTextField\"\n                rows=\"7\"\n                name=\"Description\"\n                [(ngModel)]=\"task.Description\"\n                value=\"{{ task.Description }}\"\n                required\n              ></textarea>\n            </div>\n\n            <div class=\"form-group\">\n              <label for=\"DateTextField\">Date:</label>\n              <input\n                type=\"text\"\n                class=\"form-control\"\n                id=\"DateTextField\"\n                placeholder=\"\"\n                name=\"Due_Date\"\n                [(ngModel)]=\"task.Due_Date\"\n                value=\"{{ task.Due_Date }}\"\n                required\n              />\n            </div>\n            <div>\n              <button type=\"submit\" class=\"btn btn-primary\">\n                <i class=\"fas fa-edit\"></i>{{ title }}\n              </button>\n              <a routerLink=\"/task/task-list\" class=\"btn btn-warning\">\n                <i class=\"fas fa-undo\"></i> Cancel</a\n              >\n            </div>\n          </form>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1314,55 +1430,52 @@ var TaskDetailsComponent = /** @class */ (function () {
     TaskDetailsComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.title = this.activatedRoute.snapshot.data.title;
-        this.Task = new src_app_models_task__WEBPACK_IMPORTED_MODULE_5__["ToDoList"]();
+        this.task = new src_app_models_task__WEBPACK_IMPORTED_MODULE_5__["ToDoList"]();
         this.activatedRoute.params.subscribe(function (params) {
-            _this.Task._id = params._idl;
+            _this.task._id = params.id;
         });
         if (this.title === "Edit Task") {
-            this.getTask(this.Task);
+            this.displayTask(this.task);
         }
     };
-    TaskDetailsComponent.prototype.getTask = function (task) {
+    TaskDetailsComponent.prototype.displayTask = function (task) {
         var _this = this;
         this.taskListService.getTask(task).subscribe(function (data) {
-            _this.Task = data.task;
+            _this.task = data.task;
         });
     };
     TaskDetailsComponent.prototype.onDetailsPageSubmit = function () {
         var _this = this;
         switch (this.title) {
             case "Add Task":
-                this.taskListService.addTask(this.Task).subscribe(function (data) {
+                this.taskListService.addTask(this.task).subscribe(function (data) {
                     if (data.success) {
-                        _this.flashMessage.show(data.msg, {
-                            ccsClass: "alert-success",
-                            timeout: 3000
-                        });
+                        console.log("Task Has been Added");
                         _this.router.navigate(["/task/task-list"]);
                     }
                     else {
-                        _this.flashMessage.show("Add Task Failed", {
-                            ccsClass: "alert-danger",
-                            timeout: 3000
-                        });
+                        console.log("Could not add task");
                         _this.router.navigate(["/task/task-list"]);
                     }
                 });
                 break;
             case "Edit Task":
-                this.taskListService.editTask(this.Task).subscribe(function (data) {
+                this.taskListService.editTask(this.task).subscribe(function (data) {
                     if (data.success) {
-                        _this.flashMessage.show(data.msg, {
-                            ccsClass: "alert-success",
-                            timeout: 3000
-                        });
+                        // this.flashMessage.show(data.msg, {
+                        //   ccsClass: "alert-success",
+                        //   timeout: 3000
+                        // });
+                        console.log("Editted Task");
                         _this.router.navigate(["/task/task-list"]);
                     }
                     else {
-                        _this.flashMessage.show("Edit Task Failed", {
-                            ccsClass: "alert-danger",
-                            timeout: 3000
-                        });
+                        // this.flashMessage.show("Edit Task Failed", {
+                        //   ccsClass: "alert-danger",
+                        //   timeout: 3000
+                        // });
+                        console.log("Still doesnt work");
+                        _this.router.navigate(["/task/task-list"]);
                     }
                 });
                 break;
@@ -1404,7 +1517,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <br />\n  <div class=\"jumbotron\">\n    <div>\n      <div class=\"row\">\n        <div class=\"col-md-offset3 col-md-6\">\n          <h3>Task List</h3>\n          <br />\n          <a\n            class=\"btn btn-primary\"\n            routerLink=\"/task/task-list/add\"\n            role=\"button\"\n          >\n            <i class=\"fa fa-plus-circle\"></i>Add Task</a\n          >\n          <br />\n          <table class=\"table table-bordered table-striped table-hover\">\n            <!--Table Header Row-->\n            <tr>\n              <th class=\"text-center\">ID:</th>\n              <th class=\"text-center\">Person Name:</th>\n              <th class=\"text-center\">Task Name:</th>\n              <th class=\"text-center\">Description:</th>\n              <th class=\"text-center\">End Date:</th>\n              <th class=\"text-center\"></th>\n              <th class=\"text-center\"></th>\n\n              <!--Repeatable Rows for data-->\n            </tr>\n\n            <tr *ngFor=\"let task of tasks\">\n              <td class=\"text-centre\">{{ task._id }}</td>\n              <td class=\"text-centre\">{{ task.Name }}</td>\n              <td class=\"text-centre\">{{ task.task }}</td>\n              <td class=\"text-centre\">{{ task.Description }}</td>\n              <td class=\"text-centre\">{{ task.Due_Date }}</td>\n              <td class=\"text-centre\">\n                <a\n                  routerLink=\"/task/task-list/edit/{{ task._id }}\"\n                  class=\"btn btn-primary\"\n                  ><i class=\"fa fa-pencil\">Edit</i>\n                </a>\n              </td>\n\n              <td class=\"text-centre\">\n                <a\n                  routerLink=\"/task/task-list/delete/{{ task._id }}\"\n                  class=\"btn btn-danger\"\n                  ><i class=\"fa fa-trash\">Delete</i>\n                </a>\n              </td>\n            </tr>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <br />\n  <div class=\"jumbotron\">\n    <div>\n      <div class=\"row\">\n        <div class=\"col-md-offset3 col-md-6\">\n          <h3>Task List</h3>\n          <br />\n          <a\n            class=\"btn btn-primary\"\n            routerLink=\"/task/task-list/add\"\n            role=\"button\"\n          >\n            <i class=\"fa fa-plus-circle\"></i>Add Task</a\n          >\n          <br />\n          <table class=\"table table-bordered table-striped table-hover\">\n            <!--Table Header Row-->\n            <tr>\n              <th class=\"text-center\">Person Name:</th>\n              <th class=\"text-center\">Task Name:</th>\n              <th class=\"text-center\">Description:</th>\n              <th class=\"text-center\">End Date:</th>\n              <th class=\"text-center\"></th>\n              <th class=\"text-center\"></th>\n\n              <!--Repeatable Rows for data-->\n            </tr>\n\n            <tr *ngFor=\"let task of tasks\">\n              <td class=\"text-centre\">{{ task.Name }}</td>\n              <td class=\"text-centre\">{{ task.Task }}</td>\n              <td class=\"text-centre\">{{ task.Description }}</td>\n              <td class=\"text-centre\">{{ task.Due_Date }}</td>\n              <td class=\"text-centre\">\n                <a\n                  routerLink=\"/task/task-list/edit/{{ task._id }}\"\n                  class=\"btn btn-primary\"\n                  ><i class=\"fa fa-wrench\"></i>Edit\n                </a>\n              </td>\n\n              <td class=\"text-centre\">\n                <a\n                  routerLink=\"/task/task-list/delete/{{ task._id }}\"\n                  class=\"btn btn-danger\"\n                  ><i class=\"fa fa-trash\"></i>Delete\n                </a>\n              </td>\n            </tr>\n          </table>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
