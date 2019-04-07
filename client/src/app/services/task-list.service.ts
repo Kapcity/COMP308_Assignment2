@@ -11,7 +11,9 @@ export class TaskListService {
   private user: User;
   private authToken: any = null;
 
-  private endpoint = "http://localhost:3000/api/task-list/";
+  //  private endpoint = "http://localhost:3000/api/task-list/";
+  private endpoint =
+    "https://comp308-assignment2-kapilan.herokuapp.com/api/task-list/";
 
   private httpOptions = {
     headers: new HttpHeaders({
